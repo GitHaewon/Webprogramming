@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="ko" id="top">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101b2e">
+  <meta name="description" content="카메라로 사과 등급을 판정하고 AMR이 등급별 적재 구역으로 운반하는 스마트 APC를 ROS 2와 Gazebo로 구현하는 3인 팀 프로젝트입니다. AMR 주행·물류 파트를 맡고 있습니다.">
+  <title>Smart APC · 사과 선별·물류 자동화 | AI Research Portfolio</title>
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/style.css?v=smart-apple-apc">
+  <script src="../assets/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">본문으로 바로 가기</a>
+  <header class="site-header"><div class="container header-inner"><a class="brand" href="../index.html" aria-label="연구 포트폴리오 홈"><span class="brand-mark" aria-hidden="true">R<span class="brand-dot">.</span></span><span class="brand-copy"><strong>Research Archive</strong><small>AI · DATA · PRACTICE</small></span></a><button class="menu-toggle" type="button" aria-controls="primary-nav" aria-expanded="false" aria-label="메뉴 열기"><span></span><span></span><span></span></button><nav class="nav" id="primary-nav" aria-label="주 메뉴"><a href="../index.html#home">Home</a><a href="../index.html#research">Research</a><a href="../index.html#projects">Projects</a><a href="../index.html#activities">Activities</a><a href="../index.html#publications">Publications</a><a href="../index.html#skills">Skills</a><a class="nav-contact" href="../index.html#contact">CV &amp; Contact ↗</a></nav></div></header>
+  <main id="main">
+    <section class="detail-hero" aria-labelledby="project-title">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="현재 위치">
+          <a href="../index.html">Home</a><span aria-hidden="true">/</span>
+          <a href="../index.html#projects">Projects</a><span aria-hidden="true">/</span>
+          <span aria-current="page">Smart APC</span>
+        </nav>
+        <p class="detail-kicker">3인 팀 프로젝트 · 로보틱스 시뮬레이션</p>
+        <h1 id="project-title">Smart APC · 사과 선별·물류 자동화</h1>
+        <p>카메라로 사과 등급을 판정하고, AMR(자율주행 이동로봇)이 등급별 적재 구역으로 운반하는 농산물산지유통센터(APC)를 ROS 2와 Gazebo 시뮬레이션으로 구현합니다. 저는 AMR 주행·물류 파트를 맡고 있습니다.</p>
+        <div class="detail-chips">
+          <span class="status status-active">진행 중</span>
+          <span>ROS 2</span>
+          <span>AMR 물류</span>
+          <span>Gazebo 시뮬레이션</span>
+        </div>
+      </div>
+    </section>
+    <div class="container detail-body">
+      <div class="detail-layout">
+        <div class="detail-main">
+          <section aria-labelledby="background-title">
+            <p class="detail-label">01 / BACKGROUND</p>
+            <h2 id="background-title">문제 배경</h2>
+            <p>농산물산지유통센터(APC)는 수확한 사과를 크기와 품질에 따라 선별하고 등급별로 모아 출하하는 곳입니다. 선별과 운반 모두 사람 손이 많이 가는 작업이라, 농촌 인력난이 심해질수록 이 과정을 자동화할 필요가 커지고 있습니다.</p>
+            <p>이 프로젝트는 <strong>선별(비전)과 운반(이동 로봇)을 하나의 흐름으로 연결</strong>하는 데 초점을 둡니다. 실제 설비 없이도 로봇 소프트웨어 구조를 그대로 검증할 수 있도록, 순수 Python 시뮬레이션 대신 실제 로봇에서 쓰는 ROS 2와 Gazebo를 택했습니다.</p>
+          </section>
+          <section aria-labelledby="system-title">
+            <p class="detail-label">02 / SYSTEM</p>
+            <h2 id="system-title">시스템 흐름</h2>
+            <ol class="bgent-flow">
+              <li><h3>① 컨베이어 · 카메라</h3><p>Gazebo 월드에서 사과가 주기적으로 스폰되어 컨베이어를 따라 이동하고, 카메라 영상이 ROS 2 토픽으로 전달됩니다.</p></li>
+              <li><h3>② 등급 판정</h3><p>YOLO 기반 비전 노드가 사과를 특·상·보통·비상품 4등급으로 판정하고 지름과 결함 비율을 함께 발행합니다.</p></li>
+              <li><h3>③ 운반 작업 관리</h3><p>AMR 노드가 판정 결과를 받아 등급별 적재 구역을 배정하고, 운반 작업을 큐에 쌓아 순서대로 처리합니다.</p></li>
+              <li><h3>④ 주행 · 하역</h3><p>Nav2로 배정된 구역까지 자율주행한 뒤 하역하고, 로봇 상태(대기·적재·이동·하역)를 실시간으로 발행합니다.</p></li>
+            </ol>
+            <p class="physical-ai-next">세 파트는 공통 메시지(<code>AppleGrade</code>, <code>AmrStatus</code>)와 토픽 규약으로만 연결됩니다. 모든 노드에 <code>mock</code> 모드가 있어서, 다른 파트가 완성되기 전에도 각자 가짜 입력으로 개발하고 테스트할 수 있습니다.</p>
+          </section>
+          <section aria-labelledby="role-title">
+            <p class="detail-label">03 / MY ROLE</p>
+            <h2 id="role-title">담당 파트: AMR 주행·물류</h2>
+            <p>3인 팀에서 비전 / AMR / 시뮬레이션·통합으로 나눈 가운데 <strong>AMR 주행·물류 패키지(<code>apc_amr</code>)</strong>를 맡았습니다. 비전 노드가 내보낸 등급 판정을 받아 사과가 실제로 알맞은 구역에 도착하게 만드는 부분입니다.</p>
+            <ul>
+              <li><strong>등급 → 구역 배정.</strong> 특·상·보통·비상품을 각각 A·B·C·R 구역에 대응시키고, 구역 좌표는 설정 파일(<code>zones.yaml</code>)로 관리해 월드가 바뀌어도 코드를 고치지 않게 합니다.</li>
+              <li><strong>Nav2 주행.</strong> <code>NavigateToPose</code> 액션 클라이언트를 구현해 배정된 구역 좌표로 로봇을 보내고, 도착 결과를 받아 하역 단계로 넘깁니다.</li>
+              <li><strong>적재·하역 시퀀스.</strong> 적재 → 이동 → 하역 → 대기로 이어지는 상태 전이를 정의하고, 각 상태를 모니터링 토픽으로 발행합니다.</li>
+              <li><strong>작업 큐 정책.</strong> 기본은 선입선출(FIFO)로 처리하고, 필요하면 등급 우선순위 방식을 추가해 비교합니다.</li>
+              <li><strong>운반 성능 측정.</strong> 작업당 소요 시간과 처리량을 지표로 정리합니다.</li>
+            </ul>
+            <p>개발 환경을 정할 때 <strong>Ubuntu 26.04 LTS + ROS 2 Lyrical + Gazebo Jetty 조합을 제안</strong>해 팀 표준으로 채택되었습니다. 2031년까지 지원되는 최신 LTS이고 Nav2 바이너리가 배포되는 것을 확인한 뒤 제안했습니다.</p>
+          </section>
+          <section aria-labelledby="progress-title">
+            <p class="detail-label">04 / PROGRESS</p>
+            <h2 id="progress-title">현재 진행 상황</h2>
+            <p>팀 저장소에 ROS 2 패키지 구조, 공통 메시지, 파트별 mock 노드가 마련되어 있습니다. AMR 노드는 mock 모드에서 등급 수신 → 구역 배정 → FIFO 큐 → 상태 발행까지 동작하고, 지금은 이 뼈대에 Nav2 주행을 연결하기 위한 환경 구축과 인터페이스 확정 단계에 있습니다.</p>
+            <ul>
+              <li>진행 중: 팀 공통 환경 구축, 메시지·등급 기준 합의</li>
+              <li>다음: Nav2 튜토리얼 실행 → APC 월드 맵 생성 → <code>NavigateToPose</code> 액션 클라이언트 구현</li>
+              <li>이후: 적재·하역 시퀀스, 큐 정책 비교, 운반 지표 정리</li>
+            </ul>
+            <p class="physical-ai-next">팀 전체로는 컨베이어 이동·사과 스폰 월드와 카메라 브리지가 완성되었고, 비전 파트는 AI Hub 사과 품질 이미지로 YOLO11s 베이스라인 학습을 마쳤습니다.</p>
+          </section>
+          <section aria-labelledby="timeline-title">
+            <p class="detail-label">05 / TIMELINE</p>
+            <h2 id="timeline-title">일정</h2>
+            <ol>
+              <li><strong>환경 구축</strong> (11/18 ~ 11/21) — 3명 동일 환경, mock 실행 확인</li>
+              <li><strong>인터페이스 확정</strong> (11/21 ~ 11/24) — 토픽·메시지·등급 기준 합의</li>
+              <li><strong>파트별 독립 개발</strong> (11/25 ~ 12/07) — mock 상대로 각 기능 완성</li>
+              <li><strong>통합</strong> (12/08 ~ 12/12) — Gazebo에서 사과 → 판정 → AMR 운반 시연</li>
+              <li><strong>시연·보고서</strong> (12/13 ~ 12/16) — 시연 영상, 발표, 최종 보고서</li>
+            </ol>
+          </section>
+          <a class="back-link" href="../index.html#projects"><span aria-hidden="true">←</span> 프로젝트 목록으로</a>
+        </div>
+        <aside class="detail-aside" aria-labelledby="project-facts">
+          <h2 id="project-facts">Project facts</h2>
+          <dl>
+            <div><dt>현재 상태</dt><dd>진행 중 · 환경 구축 및 인터페이스 확정</dd></div>
+            <div><dt>형태</dt><dd>3인 팀 프로젝트 (전주대학교 인공지능학과)</dd></div>
+            <div><dt>기간</dt><dd>2026.11 ~ 2026.12 (12월 중순 시연 예정)</dd></div>
+            <div><dt>본인 역할</dt><dd>AMR 주행·물류 (<code>apc_amr</code>) — 구역 배정, Nav2 주행, 작업 큐, 운반 지표</dd></div>
+            <div><dt>기술</dt><dd>ROS 2 Lyrical · Gazebo Jetty · Nav2 · Python</dd></div>
+            <div><dt>자료 · 코드</dt><dd><a href="https://github.com/jangjunwon-dev/smart_apple_apc" target="_blank" rel="noopener">GitHub 저장소 ↗</a></dd></div>
+          </dl>
+          <p>운반 성능 수치는 통합 시연 후 게시합니다.</p>
+        </aside>
+      </div>
+    </div>
+  </main>
+  <footer class="site-footer"><div class="container footer-inner"><div><strong>Research Archive<span>.</span></strong><p>AI · DATA · PRACTICE</p></div><p>확인된 기록을 바탕으로 확장하는 연구 포트폴리오</p><a href="#top">맨 위로 ↑</a></div></footer>
+</body>
+</html>

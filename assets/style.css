@@ -368,3 +368,42 @@
     grid-template-columns: 1fr;
   }
 }
+
+.apc-image {
+  background:
+    radial-gradient(ellipse at 22% 20%, rgba(236, 206, 146, .16), transparent 55%),
+    linear-gradient(140deg, #17263e, #1f4a52);
+}
+
+.apc-mark {
+  position: absolute;
+  inset: 30% 14% 26%;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: end;
+  gap: 8%;
+  border-top: 3px solid #9de2d0;
+}
+
+.apc-mark::before {
+  position: absolute;
+  top: -15px;
+  left: 6%;
+  width: 26px;
+  height: 26px;
+  content: "";
+  border-radius: 50%;
+  background: #e07a6a;
+  box-shadow: 46px 0 0 #ecce92, 92px 0 0 #e07a6a;
+}
+
+.apc-mark > span {
+  height: 34%;
+  border: 1px solid #8bd3c4;
+  border-radius: 4px;
+  background: #27465b;
+}
+
+.apc-mark > span:first-child {
+  background: #9de2d0;
+}
