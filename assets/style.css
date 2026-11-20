@@ -472,3 +472,9 @@
 .leverage-signal > span:nth-child(3) {
   width: 62%;
 }
+
+.skill-group .skill-projects {
+  margin: -6px 0 12px;
+  color: #8fa3b3;
+  font-size: 11px;
+}
