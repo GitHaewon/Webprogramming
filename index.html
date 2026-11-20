@@ -38,7 +38,7 @@
           <p class="hero-overline">대학원 진학을 준비하는 연구 포트폴리오</p>
           <h1 id="hero-title">문제를 <em>연구 질문</em>으로,<br>아이디어를 <em>검증 가능한 프로젝트</em>로.</h1>
           <p class="hero-description">시뮬레이션 속 공장 로봇부터 여러 AI가 협업하는 에이전트, 한국어 문장의 숨은 의도까지, 아이디어를 실제로 동작하는 시스템으로 끝까지 연결해 왔습니다. 숫자는 코드로 계산하고, 결과는 다시 재현할 수 있게 만들고, 한계도 숨기지 않고 기록합니다.</p>
-          <div class="hero-actions"><a class="button button-light" href="#projects">프로젝트 살펴보기 <span aria-hidden="true">↗</span></a><a class="button button-ghost" href="#research">연구 관심 분야 <span aria-hidden="true">↓</span></a></div>
+          <div class="hero-actions"><a class="button button-light" href="#projects">프로젝트 살펴보기 <span aria-hidden="true">↗</span></a><a class="button button-ghost" href="#activities">활동 기록 <span aria-hidden="true">↓</span></a></div>
         </div>
         <div class="hero-art" role="img" aria-label="연구 질문, 실험, 검증 과정을 연결한 추상적 다이어그램">
           <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
@@ -63,6 +63,74 @@
       <div class="container"><div class="section-heading"><div><p class="section-kicker">02 / SELECTED WORK</p><h2 id="projects-title" class="section-title">프로젝트 아카이브<span class="accent-period">.</span></h2></div><p class="section-lead">로봇 시뮬레이션, AI 에이전트, 자연어처리, 공공데이터 서비스까지 직접 만들고 검증한 프로젝트입니다. 상세 페이지마다 문제, 구현 방법, 실제 결과와 한계를 함께 정리했습니다.</p></div>
         <div class="filter-bar" role="group" aria-label="프로젝트 분야 필터"><button class="filter-button is-active" type="button" data-filter="all" aria-pressed="true">전체 <span>11</span></button><button class="filter-button" type="button" data-filter="nlp" aria-pressed="false">NLP</button><button class="filter-button" type="button" data-filter="vision" aria-pressed="false">컴퓨터 비전</button><button class="filter-button" type="button" data-filter="robotics" aria-pressed="false">로보틱스</button><button class="filter-button" type="button" data-filter="decision" aria-pressed="false">AI 의사결정</button><button class="filter-button" type="button" data-filter="automation" aria-pressed="false">자동화</button><button class="filter-button" type="button" data-filter="agent" aria-pressed="false">Agent</button><button class="filter-button" type="button" data-filter="public" aria-pressed="false">공공데이터</button></div>
         <div class="project-grid" id="project-grid">
+          <article class="project-card" data-category="nlp"><a href="projects/sarcasm-nlp.html" class="project-image" aria-label="대화 맥락 기반 한국어 반어 탐지 프로젝트 상세 보기"><img src="assets/project-nlp.svg" alt="문장과 맥락의 관계를 표현한 추상 그래픽" width="960" height="580" loading="lazy"><span class="image-corner">NLP</span></a><div class="project-content"><div class="project-meta"><span class="status status-active">진행 중</span><span>Natural Language Processing</span></div><h3><a href="projects/sarcasm-nlp.html">대화 맥락 기반 한국어 반어 탐지</a></h3><p>앞선 대화를 함께 읽고 마지막 발화가 반어인지 판별하는 개인 연구 프로젝트. KoCoSa 데이터로 모델을 비교하고 라벨 품질을 직접 검수하며, 국내 학술대회 투고를 목표로 진행 중입니다.</p><div class="project-footer"><span>NLP · 텍스트 분류 · 데이터 품질</span><a href="projects/sarcasm-nlp.html" aria-label="대화 맥락 기반 한국어 반어 탐지 자세히 보기">자세히 보기 <span aria-hidden="true">↗</span></a></div></div></article>
+          <article class="project-card" data-category="robotics">
+            <a href="projects/smart-apple-apc.html" class="project-image apc-image" aria-label="Smart APC 사과 선별·물류 자동화 프로젝트 상세 보기">
+              <span class="apc-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+              <span class="image-corner">SMART APC</span>
+            </a>
+            <div class="project-content">
+              <div class="project-meta"><span class="status status-active">진행 중</span><span>3인 팀 프로젝트</span></div>
+              <h3><a href="projects/smart-apple-apc.html">Smart APC · 사과 선별·물류 자동화</a></h3>
+              <p>카메라로 사과 등급을 판정하고 AMR이 등급별 구역으로 운반하는 과정을 ROS 2·Gazebo로 구현합니다. AMR 주행·물류 파트를 맡아 Nav2 운반 기능을 개발하고 있습니다.</p>
+              <div class="project-footer"><span>ROS 2 · Nav2 · AMR</span><a href="projects/smart-apple-apc.html" aria-label="Smart APC 자세히 보기">자세히 보기 <span aria-hidden="true">↗</span></a></div>
+            </div>
+          </article>
+          <article class="project-card" data-category="robotics">
+            <a href="projects/physical-ai-mobility.html" class="project-image physical-ai-image" aria-label="Physical AI 모빌리티 프로젝트 상세 보기">
+              <span class="physical-ai-route" aria-hidden="true"></span>
+              <span class="image-corner">PHYSICAL AI</span>
+            </a>
+            <div class="project-content">
+              <div class="project-meta"><span class="status status-active">진행 중</span><span>이동 로봇</span></div>
+              <h3><a href="projects/physical-ai-mobility.html">Physical AI · 멀티에이전트 모빌리티</a></h3>
+              <p>실물 AutoCAR III G 3대를 동시에 제어해 주어진 목표를 달성하는 것을 목표로 합니다. 현재는 단일 차량의 가상 주행과 이동 장애물 회피를 준비하고 있습니다.</p>
+              <div class="project-footer"><span>자율주행 · 강화학습</span><a href="projects/physical-ai-mobility.html" aria-label="Physical AI 모빌리티 자세히 보기">자세히 보기 <span aria-hidden="true">↗</span></a></div>
+            </div>
+          </article>
+          <article class="project-card" data-category="vision">
+            <a href="projects/jj-library-ocr.html" class="project-image library-ocr-image" aria-label="전주대 도서관 책등 OCR 프로젝트 상세 보기">
+              <span class="library-ocr-scan" aria-hidden="true"></span>
+              <span class="image-corner">OCR</span>
+            </a>
+            <div class="project-content">
+              <div class="project-meta"><span class="status status-active">진행 중</span><span>전주대학교 도서관</span></div>
+              <h3><a href="projects/jj-library-ocr.html">전주대 도서관 책등 OCR</a></h3>
+              <p>스마트폰 카메라 기반 장서점검을 위한 책등 OCR 데모를 개발 중입니다. 이후 AR 글래스와 로봇으로 확장하는 로드맵을 구상하고 있습니다.</p>
+              <div class="project-footer"><span>컴퓨터 비전 · 문자인식</span><a href="projects/jj-library-ocr.html" aria-label="전주대 도서관 책등 OCR 자세히 보기">자세히 보기 <span aria-hidden="true">↗</span></a></div>
+            </div>
+          </article>
+          <article class="project-card" data-category="public"><a href="projects/jeonju-living-lab.html" class="project-image" aria-label="JU RENT 전주 대학가 월세 판단 서비스 상세 보기"><img src="assets/ju-rent/contract-judgment.png" alt="JU RENT 계약 판단 화면: 비슷한 실거래 분포 속에서 매물의 위치를 보여 주는 모습" width="1186" height="735" loading="lazy"><span class="image-corner">PUBLIC DATA</span></a><div class="project-content"><div class="project-meta"><span class="status status-active">진행 중</span><span>Living Lab</span></div><h3><a href="projects/jeonju-living-lab.html">JU RENT · 전주 대학가 월세 판단 서비스</a></h3><p>전주대 리빙랩 프로젝트. 국토교통부 실거래 데이터로 자취방 가격이 적당한지 판단하고, 예산에 맞는 동네와 두 대학가를 비교하는 웹 서비스를 만들었습니다. 현재 실증을 준비하고 있습니다.</p><div class="project-footer"><span>공공데이터 · 실거래 분석</span><a href="projects/jeonju-living-lab.html" aria-label="JU RENT 자세히 보기">자세히 보기 <span aria-hidden="true">↗</span></a></div></div></article>
+          <article class="project-card" data-category="robotics">
+            <a href="projects/industrial-sim-capstone.html" class="project-image" aria-label="Industrial Sim Capstone 프로젝트 상세 보기"><img src="assets/industrial-sim/gazebo-world.jpg" alt="컨베이어, 로봇팔, 이동식 상자가 배치된 Gazebo 공장 월드" width="1280" height="720" loading="lazy"><span class="image-corner">CAPSTONE</span></a>
+            <div class="project-content">
+              <div class="project-meta"><span class="status status-done">완료</span><span>AI 캡스톤디자인</span></div>
+              <h3><a href="projects/industrial-sim-capstone.html">Industrial Sim Capstone · 스마트 팩토리 물류 시뮬레이션</a></h3>
+              <p>컨베이어 공급, RGB-D 비전 분류, 로봇팔 Pick &amp; Place, Nav2 AMR 운송을 하나의 ROS 2 공정 상태 머신으로 통합했습니다. 시드 42 기준 A/B/C 3/3 배송 완료, 테스트 20/20 통과.</p>
+              <div class="project-footer"><span>ROS 2 · Gazebo · Nav2 · 시연 영상</span><a href="projects/industrial-sim-capstone.html" aria-label="Industrial Sim Capstone 자세히 보기">자세히 보기 <span aria-hidden="true">↗</span></a></div>
+            </div>
+          </article>
+          <article class="project-card" data-category="decision agent">
+            <a href="projects/ai-ic-simulation.html" class="project-image" aria-label="AI 투자위원회 시뮬레이션 프로젝트 상세 보기"><img src="assets/ic-simulation/thumb.png" alt="충격 시나리오별 IRR을 비교한 막대 그래프" width="1010" height="631" loading="lazy"><span class="image-corner">MULTI-AGENT</span></a>
+            <div class="project-content">
+              <div class="project-meta"><span class="status status-done">완료</span><span>공모전 · 개인 프로젝트</span></div>
+              <h3><a href="projects/ai-ic-simulation.html">AI 투자위원회 시뮬레이션 · IC Memo 자동 생성</a></h3>
+              <p>6개 AI 에이전트가 투자위원회 역할을 나눠 토론하고, DART 공시 기반 RAG와 코드로 계산한 충격 시나리오를 근거로 투자 검토 보고서 초안을 자동 생성합니다.</p>
+              <div class="project-footer"><span>LangGraph · Hybrid RAG · IRR 시뮬레이션</span><a href="projects/ai-ic-simulation.html" aria-label="AI 투자위원회 시뮬레이션 자세히 보기">자세히 보기 <span aria-hidden="true">↗</span></a></div>
+            </div>
+          </article>
+          <article class="project-card" data-category="decision agent automation">
+            <a href="projects/calculate-delivery.html" class="project-image bgent-image" aria-label="CalculateDelivery 프로젝트 상세 보기">
+              <span class="bgent-workflow-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+              <span class="image-corner">AI AGENT</span>
+            </a>
+            <div class="project-content">
+              <div class="project-meta"><span class="status status-done">대회 제출</span><span>2026 SKKU × Microsoft Agenthon</span></div>
+              <h3><a href="projects/calculate-delivery.html">CalculateDelivery · 자동차 납기 대응 에이전트</a></h3>
+              <p>부품 입고와 생산라인 일정을 바탕으로 자동차 주문의 예상 납기를 계산하고, 설비 장애 시 영향받는 주문과 납기 대안을 보여주는 에이전트입니다.</p>
+              <div class="project-footer"><span>Copilot Studio · What-if</span><a href="projects/calculate-delivery.html" aria-label="CalculateDelivery 자세히 보기">자세히 보기 <span aria-hidden="true">↗</span></a></div>
+            </div>
+          </article>
           <article class="project-card" data-category="nlp">
             <a href="projects/docfusionx.html" class="project-image docfusionx-image" aria-label="DocFusionX 프로젝트 상세 보기">
               <span class="docfusionx-diagram" aria-hidden="true">
@@ -80,87 +148,19 @@
               <div class="project-footer"><span>장문 문서 질의응답</span><a href="projects/docfusionx.html" aria-label="DocFusionX 자세히 보기">자세히 보기 <span aria-hidden="true">↗</span></a></div>
             </div>
           </article>
-          <article class="project-card" data-category="vision">
-            <a href="projects/jj-library-ocr.html" class="project-image library-ocr-image" aria-label="전주대 도서관 책등 OCR 프로젝트 상세 보기">
-              <span class="library-ocr-scan" aria-hidden="true"></span>
-              <span class="image-corner">OCR</span>
-            </a>
-            <div class="project-content">
-              <div class="project-meta"><span class="status status-active">진행 중</span><span>전주대학교 도서관</span></div>
-              <h3><a href="projects/jj-library-ocr.html">전주대 도서관 책등 OCR</a></h3>
-              <p>스마트폰 카메라 기반 장서점검을 위한 책등 OCR 데모를 개발 중입니다. 이후 AR 글래스와 로봇으로 확장하는 로드맵을 구상하고 있습니다.</p>
-              <div class="project-footer"><span>컴퓨터 비전 · 문자인식</span><a href="projects/jj-library-ocr.html" aria-label="전주대 도서관 책등 OCR 자세히 보기">자세히 보기 <span aria-hidden="true">↗</span></a></div>
-            </div>
-          </article>
-          <article class="project-card" data-category="robotics">
-            <a href="projects/physical-ai-mobility.html" class="project-image physical-ai-image" aria-label="Physical AI 모빌리티 프로젝트 상세 보기">
-              <span class="physical-ai-route" aria-hidden="true"></span>
-              <span class="image-corner">PHYSICAL AI</span>
-            </a>
-            <div class="project-content">
-              <div class="project-meta"><span class="status status-active">진행 중</span><span>이동 로봇</span></div>
-              <h3><a href="projects/physical-ai-mobility.html">Physical AI · 멀티에이전트 모빌리티</a></h3>
-              <p>실물 AutoCAR III G 3대를 동시에 제어해 주어진 목표를 달성하는 것을 목표로 합니다. 현재는 단일 차량의 가상 주행과 이동 장애물 회피를 준비하고 있습니다.</p>
-              <div class="project-footer"><span>자율주행 · 강화학습</span><a href="projects/physical-ai-mobility.html" aria-label="Physical AI 모빌리티 자세히 보기">자세히 보기 <span aria-hidden="true">↗</span></a></div>
-            </div>
-          </article>
-          <article class="project-card" data-category="robotics">
-            <a href="projects/smart-apple-apc.html" class="project-image apc-image" aria-label="Smart APC 사과 선별·물류 자동화 프로젝트 상세 보기">
-              <span class="apc-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
-              <span class="image-corner">SMART APC</span>
-            </a>
-            <div class="project-content">
-              <div class="project-meta"><span class="status status-active">진행 중</span><span>3인 팀 프로젝트</span></div>
-              <h3><a href="projects/smart-apple-apc.html">Smart APC · 사과 선별·물류 자동화</a></h3>
-              <p>카메라로 사과 등급을 판정하고 AMR이 등급별 구역으로 운반하는 과정을 ROS 2·Gazebo로 구현합니다. AMR 주행·물류 파트를 맡아 Nav2 운반 기능을 개발하고 있습니다.</p>
-              <div class="project-footer"><span>ROS 2 · Nav2 · AMR</span><a href="projects/smart-apple-apc.html" aria-label="Smart APC 자세히 보기">자세히 보기 <span aria-hidden="true">↗</span></a></div>
-            </div>
-          </article>
-          <article class="project-card" data-category="robotics">
-            <a href="projects/industrial-sim-capstone.html" class="project-image" aria-label="Industrial Sim Capstone 프로젝트 상세 보기"><img src="assets/industrial-sim/gazebo-world.jpg" alt="컨베이어, 로봇팔, 이동식 상자가 배치된 Gazebo 공장 월드" width="1280" height="720" loading="lazy"><span class="image-corner">CAPSTONE</span></a>
-            <div class="project-content">
-              <div class="project-meta"><span class="status status-done">완료</span><span>AI 캡스톤디자인</span></div>
-              <h3><a href="projects/industrial-sim-capstone.html">Industrial Sim Capstone · 스마트 팩토리 물류 시뮬레이션</a></h3>
-              <p>컨베이어 공급, RGB-D 비전 분류, 로봇팔 Pick &amp; Place, Nav2 AMR 운송을 하나의 ROS 2 공정 상태 머신으로 통합했습니다. 시드 42 기준 A/B/C 3/3 배송 완료, 테스트 20/20 통과.</p>
-              <div class="project-footer"><span>ROS 2 · Gazebo · Nav2 · 시연 영상</span><a href="projects/industrial-sim-capstone.html" aria-label="Industrial Sim Capstone 자세히 보기">자세히 보기 <span aria-hidden="true">↗</span></a></div>
-            </div>
-          </article>
-          <article class="project-card" data-category="decision">
-            <a href="projects/calculate-delivery.html" class="project-image bgent-image" aria-label="CalculateDelivery 프로젝트 상세 보기">
-              <span class="bgent-workflow-mark" aria-hidden="true"><span></span><span></span><span></span></span>
-              <span class="image-corner">AI AGENT</span>
-            </a>
-            <div class="project-content">
-              <div class="project-meta"><span class="status status-done">대회 제출</span><span>2026 SKKU × Microsoft Agenthon</span></div>
-              <h3><a href="projects/calculate-delivery.html">CalculateDelivery · 자동차 납기 대응 에이전트</a></h3>
-              <p>부품 입고와 생산라인 일정을 바탕으로 자동차 주문의 예상 납기를 계산하고, 설비 장애 시 영향받는 주문과 납기 대안을 보여주는 에이전트입니다.</p>
-              <div class="project-footer"><span>Copilot Studio · What-if</span><a href="projects/calculate-delivery.html" aria-label="CalculateDelivery 자세히 보기">자세히 보기 <span aria-hidden="true">↗</span></a></div>
-            </div>
-          </article>
-          <article class="project-card" data-category="decision">
-            <a href="projects/ai-ic-simulation.html" class="project-image" aria-label="AI 투자위원회 시뮬레이션 프로젝트 상세 보기"><img src="assets/ic-simulation/home.png" alt="AI 투자위원회 시뮬레이션 시스템의 Streamlit 첫 화면" width="1440" height="900" loading="lazy"><span class="image-corner">MULTI-AGENT</span></a>
-            <div class="project-content">
-              <div class="project-meta"><span class="status status-done">완료</span><span>공모전 · 개인 프로젝트</span></div>
-              <h3><a href="projects/ai-ic-simulation.html">AI 투자위원회 시뮬레이션 · IC Memo 자동 생성</a></h3>
-              <p>6개 AI 에이전트가 투자위원회 역할을 나눠 토론하고, DART 공시 기반 RAG와 코드로 계산한 충격 시나리오를 근거로 투자 검토 보고서 초안을 자동 생성합니다.</p>
-              <div class="project-footer"><span>LangGraph · Hybrid RAG · IRR 시뮬레이션</span><a href="projects/ai-ic-simulation.html" aria-label="AI 투자위원회 시뮬레이션 자세히 보기">자세히 보기 <span aria-hidden="true">↗</span></a></div>
-            </div>
-          </article>
           <article class="project-card" data-category="automation agent">
             <a href="projects/leverage-agent.html" class="project-image leverage-image" aria-label="AI Trading Copilot 프로젝트 상세 보기">
               <span class="leverage-signal" aria-hidden="true"><span></span><span></span><span></span></span>
               <span class="image-corner">SHADOW EVALUATION</span>
             </a>
             <div class="project-content">
-              <div class="project-meta"><span class="status status-unverified">Shadow 프로토타입</span><span>자동화 · Agent</span></div>
+              <div class="project-meta"><span class="status status-active">Shadow 프로토타입</span><span>자동화 · Agent</span></div>
               <h3><a href="projects/leverage-agent.html">AI Trading Copilot · 거래 판단 자동화</a></h3>
               <p>암호화폐 선물 데이터를 수집하고, 규칙 기반 후보 생성과 GPT 검토, 리스크 검사, 가상 거래 기록을 연결한 의사결정 지원 도구입니다.</p>
               <div class="project-footer"><span>Python · FastAPI · Next.js</span><a href="projects/leverage-agent.html" aria-label="AI Trading Copilot 자세히 보기">자세히 보기 <span aria-hidden="true">↗</span></a></div>
             </div>
           </article>
-          <article class="project-card" data-category="nlp"><a href="projects/sarcasm-nlp.html" class="project-image" aria-label="대화 맥락 기반 한국어 반어 탐지 프로젝트 상세 보기"><img src="assets/project-nlp.svg" alt="문장과 맥락의 관계를 표현한 추상 그래픽" width="960" height="580" loading="lazy"><span class="image-corner">NLP</span></a><div class="project-content"><div class="project-meta"><span class="status status-active">진행 중</span><span>Natural Language Processing</span></div><h3><a href="projects/sarcasm-nlp.html">대화 맥락 기반 한국어 반어 탐지</a></h3><p>앞선 대화를 함께 읽고 마지막 발화가 반어인지 판별하는 개인 연구 프로젝트. KoCoSa 데이터로 모델을 비교하고 라벨 품질을 직접 검수하며, 국내 학술대회 투고를 목표로 진행 중입니다.</p><div class="project-footer"><span>NLP · 텍스트 분류 · 데이터 품질</span><a href="projects/sarcasm-nlp.html" aria-label="대화 맥락 기반 한국어 반어 탐지 자세히 보기">자세히 보기 <span aria-hidden="true">↗</span></a></div></div></article>
           <article class="project-card" data-category="decision"><a href="projects/ai-marketing-poc.html" class="project-image" aria-label="AI 마케팅 의사결정 지원 PoC 상세 보기"><img src="assets/project-marketing.svg" alt="시각 정보와 추세 신호를 연결한 추상 그래픽" width="960" height="580" loading="lazy"><span class="image-corner">AI SYSTEM</span></a><div class="project-content"><div class="project-meta"><span class="status status-unverified">상태 확인 필요</span><span>Decision Support</span></div><h3><a href="projects/ai-marketing-poc.html">AI 마케팅 의사결정 지원 PoC</a></h3><p>Vision AI와 트렌드 감지를 활용하는 마케팅 의사결정 지원 시스템 방향. 구현 및 실험 여부는 확인 후 업데이트합니다.</p><div class="project-footer"><span>Vision AI · 트렌드 분석</span><a href="projects/ai-marketing-poc.html" aria-label="AI 마케팅 의사결정 지원 PoC 자세히 보기">자세히 보기 <span aria-hidden="true">↗</span></a></div></div></article>
-          <article class="project-card" data-category="public"><a href="projects/jeonju-living-lab.html" class="project-image" aria-label="JU RENT 전주 대학가 월세 판단 서비스 상세 보기"><img src="assets/ju-rent/contract-judgment.png" alt="JU RENT 계약 판단 화면: 비슷한 실거래 분포 속에서 매물의 위치를 보여 주는 모습" width="1186" height="735" loading="lazy"><span class="image-corner">PUBLIC DATA</span></a><div class="project-content"><div class="project-meta"><span class="status status-active">진행 중</span><span>Living Lab</span></div><h3><a href="projects/jeonju-living-lab.html">JU RENT · 전주 대학가 월세 판단 서비스</a></h3><p>전주대 리빙랩 프로젝트. 국토교통부 실거래 데이터로 자취방 가격이 적당한지 판단하고, 예산에 맞는 동네와 두 대학가를 비교하는 웹 서비스를 만들었습니다. 현재 실증을 준비하고 있습니다.</p><div class="project-footer"><span>공공데이터 · 실거래 분석</span><a href="projects/jeonju-living-lab.html" aria-label="JU RENT 자세히 보기">자세히 보기 <span aria-hidden="true">↗</span></a></div></div></article>
         </div>
         <p class="status-note"><strong>상태 표기</strong> 진행 중 · 완료 · 대회 제출은 실제 진행 상황 그대로 적고, 아직 정리하지 못한 항목은 ‘상태 확인 필요’로 남겨 둡니다.</p>
       </div>
