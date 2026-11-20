@@ -152,3 +152,48 @@
   content: "";
   background: #ecce92;
 }
+
+.library-roadmap {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.library-roadmap > li {
+  padding: 13px 16px;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+}
+
+.detail-main .library-roadmap > li + li {
+  margin-top: 0;
+}
+
+.library-roadmap > .library-roadmap-current {
+  border-color: #87c5b7;
+  background: #f2fbf8;
+}
+
+.library-roadmap-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 10px;
+  margin-bottom: 5px;
+}
+
+.library-roadmap-heading h3,
+.library-roadmap > li > p {
+  margin: 0;
+}
+
+.library-roadmap-heading h3 {
+  color: var(--ink);
+  font-size: 16px;
+}
+
+.library-pipeline {
+  padding-left: 22px;
+}
