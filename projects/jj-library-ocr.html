@@ -7,7 +7,7 @@
   <meta name="description" content="전주대학교 도서관과 함께 책등의 청구기호를 인식하는 OCR 데모를 개발하고 장서점검 활용 가능성을 검토하는 프로젝트입니다.">
   <title>전주대 도서관 책등 OCR | AI Research Portfolio</title>
   <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="../assets/style.css?v=jj-library-detect">
+  <link rel="stylesheet" href="../assets/style.css?v=jj-library-exp3">
   <script src="../assets/app.js" defer></script>
 </head>
 <body>
@@ -68,8 +68,8 @@
             <h2 id="pipeline-title">Step 1 처리 흐름 설계</h2>
             <ol class="library-pipeline">
               <li><strong>스마트폰 카메라(AR).</strong> 책등 라벨을 촬영하고, 촬영 화면에 AR 안내를 적용하는 방향을 구상합니다.</li>
-              <li><strong>YOLO.</strong> 촬영 이미지에서 청구기호 라벨 후보 영역을 찾아 OCR에 전달하는 방식을 구상합니다.</li>
-              <li><strong>OCR.</strong> 전달받은 라벨 영역에서 청구기호를 읽습니다.</li>
+              <li><strong>YOLO.</strong> 촬영 이미지에서 청구기호 라벨 위치를 찾아 OCR에 전달합니다. 3차 실험에서 YOLO11n을 도서관 사진으로 추가 학습해 구현했습니다.</li>
+              <li><strong>OCR.</strong> 전달받은 라벨 영역에서 글자 위치를 찾고 청구기호를 읽습니다. 3차 실험에서는 한국어 PP-OCRv5와 EasyOCR을 비교했습니다.</li>
               <li><strong>데이터 정리.</strong> 읽은 청구기호를 장서점검에서 확인할 수 있는 형식으로 정리합니다.</li>
               <li><strong>기존 프로그램 연동.</strong> 정리된 결과를 기존 장서점검 프로그램에 전달하는 방식과 등록번호 확인 절차를 검토합니다.</li>
             </ol>
@@ -81,14 +81,51 @@
               <li>같은 책이 찍힌 사진이 개발용과 최종 평가용에 나뉘지 않도록, 겹치는 사진을 검토하고 그룹 단위로 분리하는 절차를 마련했습니다.</li>
               <li>라벨에 적힌 값을 수동으로 기록한 뒤 OCR 결과와 비교할 수 있도록, 완전 일치율과 문자 오류율을 계산하는 평가 코드를 마련했습니다.</li>
             </ul>
-            <figure class="shot-figure small-shot">
-              <img src="../assets/jj-library/label-detection.png" width="355" height="270" loading="lazy" decoding="async" alt="서가에 꽂힌 책들의 책등 사진. 아래쪽 청구기호 라벨마다 파란 상자가 그려져 있고, 상자 위에 label과 0.84에서 0.90 사이의 신뢰도가 표시되어 있습니다.">
-              <figcaption>책등 사진에서 청구기호 라벨 영역을 검출한 테스트 결과 — 라벨마다 상자와 신뢰도(약 0.84~0.90)가 표시됩니다.</figcaption>
+          </section>
+          <section aria-labelledby="experiment-title">
+            <h2 id="experiment-title">3차 실험: 라벨 검출 + 청구기호 OCR</h2>
+            <p>책장 사진 한 장에서 청구기호 스티커를 자동으로 찾고, 잘라낸 스티커의 글자를 읽는 전체 흐름을 처음으로 연결해 평가했습니다.</p>
+            <ol class="library-pipeline">
+              <li><strong>스티커 위치 검출.</strong> YOLO11n이 책장 사진에서 스티커마다 직사각형 박스를 예측합니다.</li>
+              <li><strong>스티커 이미지 추출.</strong> 예측 박스에 여백을 더해 원본 사진에서 잘라냅니다.</li>
+              <li><strong>글자 위치 검출과 인식.</strong> PP-OCRv5 모델이 스티커 안의 글자 영역을 찾고(DB 후처리), 한국어 인식 모델이 문자열로 바꿉니다(CTC 디코딩).</li>
+              <li><strong>결과 저장.</strong> 줄별 문자열과 신뢰도 점수를 저장합니다.</li>
+            </ol>
+            <h3 class="sub-heading">라벨 검출 성능</h3>
+            <p>사진 67장 중 60장으로 학습하고 7장으로 평가했습니다. Labelme로 그린 라벨 경계를 직사각형 정답 박스로 바꿔 사전학습된 YOLO11n을 추가 학습했습니다(입력 640픽셀, 30회 학습).</p>
+            <table class="metric-table">
+              <thead><tr><th>지표</th><th>결과</th><th>값</th></tr></thead>
+              <tbody>
+                <tr><td>검출 재현율</td><td>정답 스티커 83개 중 76개 검출</td><td>91.6%</td></tr>
+                <tr><td>검출 정밀도</td><td>예측 박스 78개 중 76개가 정답과 일치</td><td>97.4%</td></tr>
+                <tr><td>검출 오류</td><td>미검출 7개 · 오검출 후보 2개</td><td>—</td></tr>
+              </tbody>
+            </table>
+            <p class="table-note">판정 기준: 신뢰도 0.25 이상, 예측 박스와 정답 박스의 IoU 0.5 이상, 일대일 매칭</p>
+            <figure class="shot-figure">
+              <img src="../assets/jj-library/test-detection-02.jpg" width="960" height="720" loading="lazy" decoding="async" alt="서가 사진의 책등 아래쪽 청구기호 스티커마다 YOLO11n이 그린 파란 박스와 0.8에서 0.9 사이의 검출 신뢰도가 표시된 테스트 결과">
+              <figcaption>테스트 사진 라벨 검출 결과 — 파란 박스가 YOLO11n이 찾은 스티커 위치, 박스 위 숫자는 검출 신뢰도입니다.</figcaption>
+            </figure>
+            <h3 class="sub-heading">청구기호 OCR 성능</h3>
+            <p>검출된 라벨 78개 중 사람이 읽을 수 있는 69개에서 청구기호 207줄을 비교했습니다. 위아래 숫자 띠와 판독 불가 줄은 빼고, 공백과 영문 대소문자는 무시했습니다.</p>
+            <table class="metric-table">
+              <thead><tr><th>OCR 모델</th><th>입력 영역</th><th>줄 일치율</th></tr></thead>
+              <tbody>
+                <tr><td><strong>한국어 PP-OCRv5</strong></td><td>스티커 전체</td><td><strong>63.3%</strong> (131/207)</td></tr>
+                <tr><td>한국어 PP-OCRv5</td><td>청구기호 영역</td><td>58.5% (121/207)</td></tr>
+                <tr><td>EasyOCR</td><td>스티커 전체</td><td>27.1% (56/207)</td></tr>
+                <tr><td>EasyOCR</td><td>청구기호 영역</td><td>26.1% (54/207)</td></tr>
+              </tbody>
+            </table>
+            <p class="table-note">가장 좋은 조합(PP-OCRv5 · 스티커 전체)에서도 한 스티커의 모든 줄을 맞힌 비율은 31.9%(22/69개)입니다.</p>
+            <figure class="shot-figure">
+              <img src="../assets/jj-library/ocr-examples.png" width="1491" height="872" loading="lazy" decoding="async" alt="테스트 라벨 세 개의 원본과 OCR 출력 비교. 첫 번째는 C 201 정792ㅅ 세 줄을 모두 맞혔고, 두 번째는 김832ㅊ에서 ㅊ을 빠뜨렸으며, 세 번째는 김985ㄱ의 ㄱ을 숫자 7로 읽었습니다.">
+              <figcaption>사람 판독과 실제 OCR 출력 비교 — 숫자와 첫 줄은 잘 읽지만, 저자기호 끝의 한글 자음(ㅊ, ㄱ)을 빠뜨리거나 숫자로 읽는 오류가 많습니다.</figcaption>
             </figure>
           </section>
           <section aria-labelledby="next-title">
             <h2 id="next-title">Step 1에서 확인할 것</h2>
-            <p>개발용 사진에서 인식 오류를 살펴보고, 별도로 분리한 사진으로 정확도를 평가할 계획입니다. YOLO가 찾은 라벨 영역을 OCR에 연결하는 방식과 기존 장서점검 프로그램에 전달할 데이터 형식도 검토합니다.</p>
+            <p>라벨 검출은 실사용에 가까운 수준이지만, 청구기호를 한 줄도 틀리지 않고 읽는 비율은 아직 낮습니다. 저자기호 끝의 한글 자음 오류를 줄이도록 OCR을 개선하고, 평가용 사진을 늘려 결과를 다시 확인할 계획입니다. 읽은 청구기호를 기존 장서점검 프로그램에 전달할 데이터 형식과 등록번호 확인 절차도 검토합니다.</p>
           </section>
           <a class="back-link" href="../index.html#projects"><span aria-hidden="true">←</span> 프로젝트 목록으로</a>
         </div>
@@ -96,9 +133,9 @@
           <h2 id="project-facts">프로젝트 정보</h2>
           <dl>
             <div><dt>협업 기관</dt><dd>전주대학교 도서관</dd></div>
-            <div><dt>현재 단계</dt><dd>Step 1 진행 중 · OCR 데모 개발 및 평가 준비</dd></div>
-            <div><dt>현재 데모 기술</dt><dd>Python · EasyOCR · OpenCV</dd></div>
-            <div><dt>평가 지표</dt><dd>완전 일치율 · 문자 오류율(CER)</dd></div>
+            <div><dt>현재 단계</dt><dd>Step 1 진행 중 · 3차 실험 완료(라벨 검출 + OCR)</dd></div>
+            <div><dt>현재 데모 기술</dt><dd>Python · YOLO11n · PP-OCRv5 · EasyOCR · OpenCV · Labelme</dd></div>
+            <div><dt>평가 지표</dt><dd>검출 재현율·정밀도 · 줄 일치율 · 완전 일치율 · 문자 오류율(CER)</dd></div>
           </dl>
         </aside>
       </div>

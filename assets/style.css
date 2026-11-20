@@ -689,3 +689,7 @@
     grid-template-columns: 1fr;
   }
 }
+
+.detail-main .sub-heading {
+  margin-top: 28px;
+}
