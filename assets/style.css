@@ -79,3 +79,46 @@
 .docfusionx-node-top { top: 0; }
 .docfusionx-node-middle { top: 40%; background: #9de2d0; }
 .docfusionx-node-bottom { top: 80%; }
+
+.event-photos {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.event-photos figure {
+  overflow: hidden;
+  margin: 0;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  background: var(--paper);
+}
+
+.event-photos a {
+  display: block;
+}
+
+.event-photos a:focus-visible {
+  outline-offset: -4px;
+}
+
+.event-photos img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
+  background: var(--navy);
+}
+
+.event-photos figcaption {
+  padding: 10px 12px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+@media (max-width: 560px) {
+  .event-photos {
+    grid-template-columns: 1fr;
+  }
+}
