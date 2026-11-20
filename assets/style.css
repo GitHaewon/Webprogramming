@@ -602,3 +602,7 @@
   max-width: 320px;
   margin-inline: auto;
 }
+
+.shot-figure.small-shot {
+  max-width: 480px;
+}
