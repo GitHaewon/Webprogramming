@@ -478,3 +478,122 @@
   color: #8fa3b3;
   font-size: 11px;
 }
+
+.docfusionx-architecture {
+  margin: 0 0 16px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--paper);
+}
+
+.docfusionx-architecture figcaption {
+  margin-bottom: 14px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.docfusionx-architecture > div + div {
+  margin-top: 16px;
+}
+
+.docfusionx-architecture h3 {
+  margin: 0 0 7px;
+  font-size: 16px;
+}
+
+.docfusionx-pipeline {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.docfusionx-query {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.detail-main .docfusionx-pipeline > li {
+  position: relative;
+  margin: 0;
+  padding: 10px;
+  border: 1px solid #b8dbd2;
+  border-radius: 4px;
+  background: var(--white);
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.detail-main .docfusionx-pipeline > li:not(:last-child)::after {
+  position: absolute;
+  top: calc(50% - 3px);
+  right: -12px;
+  width: 6px;
+  height: 6px;
+  border: solid var(--teal-dark);
+  border-width: 1px 1px 0 0;
+  content: "";
+  transform: rotate(45deg);
+}
+
+.docfusionx-pipeline strong,
+.docfusionx-pipeline span {
+  display: block;
+}
+
+.docfusionx-pipeline strong {
+  margin-bottom: 4px;
+  color: var(--ink);
+}
+
+.docfusionx-pipeline span {
+  font-size: 12px;
+}
+
+.docfusionx-results {
+  width: 100%;
+  margin: 16px 0 12px;
+  border-collapse: collapse;
+  font-size: 14px;
+  text-align: left;
+}
+
+.docfusionx-results caption {
+  margin-bottom: 7px;
+  font-size: 14px;
+  font-weight: 700;
+  text-align: left;
+}
+
+.docfusionx-results th,
+.docfusionx-results td {
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  overflow-wrap: anywhere;
+}
+
+.docfusionx-results thead th {
+  color: var(--ink);
+  background: var(--paper);
+}
+
+@media (max-width: 560px) {
+  .docfusionx-pipeline,
+  .docfusionx-query {
+    grid-template-columns: 1fr;
+  }
+
+  .detail-main .docfusionx-pipeline > li:not(:last-child)::after {
+    top: auto;
+    right: calc(50% - 3px);
+    bottom: -12px;
+    transform: rotate(135deg);
+  }
+
+  .docfusionx-results th,
+  .docfusionx-results td {
+    padding: 6px;
+  }
+}

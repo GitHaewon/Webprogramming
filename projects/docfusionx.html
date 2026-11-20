@@ -7,7 +7,7 @@
   <meta name="description" content="EU AI Act PDF로 기본 RAG를 테스트하고 하이브리드 검색을 제안·구현한 DocFusionX 팀 프로젝트의 기여를 소개합니다.">
   <title>DocFusionX | AI Research Portfolio</title>
   <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="../assets/style.css?v=887b13c">
+  <link rel="stylesheet" href="../assets/style.css?v=docfusionx-design">
   <script src="../assets/app.js" defer></script>
 </head>
 <body>
@@ -34,6 +34,35 @@
     <div class="container detail-body">
       <div class="detail-layout">
         <div class="detail-main">
+          <section aria-labelledby="problem-title">
+            <h2 id="problem-title">문제 정의</h2>
+            <p>EU AI Act처럼 장·절·조항으로 구성된 긴 PDF에는 한 질문에 필요한 근거가 여러 곳에 흩어져 있습니다. 기본 RAG는 문서를 작은 텍스트 조각으로 나누고 질문과 유사한 조각을 가져옵니다. 다른 절에 있는 관련 조항이 검색에서 빠지면, 언어 모델이 답변을 다시 다듬어도 그 조항을 근거로 쓸 수 없습니다.</p>
+            <p>예를 들어 문서에 언급된 조항을 모두 찾아 한 문장씩 요약하려면, 질문과 표현이 비슷한 문단뿐 아니라 각 조항이 속한 절과 인접 문단까지 찾아야 합니다. DocFusionX는 문서를 분할할 때 이 관계를 저장하고, 질의 시 검색 범위를 확장하도록 설계했습니다.</p>
+          </section>
+          <section aria-labelledby="architecture-title">
+            <h2 id="architecture-title">시스템 설계도</h2>
+            <figure class="docfusionx-architecture">
+              <figcaption>공개 서버 코드 기준 처리 흐름</figcaption>
+              <div>
+                <h3>문서 등록</h3>
+                <ol class="docfusionx-pipeline" role="list">
+                  <li><strong>PDF 변환</strong><span>Docling으로 Markdown 추출</span></li>
+                  <li><strong>절 단위 분할</strong><span>제목, 절 ID, 앞뒤 조각 ID 저장</span></li>
+                  <li><strong>벡터 저장</strong><span>BGE-M3 임베딩을 ChromaDB에 저장</span></li>
+                </ol>
+              </div>
+              <div>
+                <h3>질문 처리</h3>
+                <ol class="docfusionx-pipeline docfusionx-query" role="list">
+                  <li><strong>후보 찾기</strong><span>HyDE로 가상 답변을 만든 뒤 벡터 검색</span></li>
+                  <li><strong>검색 확장</strong><span>앞뒤 조각과 같은 절의 문맥 추가</span></li>
+                  <li><strong>후보 재정렬</strong><span>BGE 재정렬 모델로 관련도 평가</span></li>
+                  <li><strong>답변 생성</strong><span>Mistral로 답변 생성 후 구조 오류 점검</span></li>
+                </ol>
+              </div>
+            </figure>
+            <p>벡터 검색으로 찾은 조각을 출발점으로 삼고, 저장해 둔 관계를 따라 주변 문맥을 함께 가져옵니다. 이렇게 찾은 근거와 문서의 제목 구조를 답변 모델에 전달합니다. <a class="back-link" href="https://github.com/DocFusionX/server/blob/main/app/services/rag/service.py#L129">기본 질의 코드 <span aria-hidden="true">↗</span></a></p>
+          </section>
           <section aria-labelledby="contribution-title">
             <h2 id="contribution-title">본인 기여</h2>
             <ul>
@@ -41,10 +70,23 @@
               <li><strong>검색 결과 공동 분석.</strong> 팀원들과 응답을 검토하면서, 유사한 텍스트 조각만 검색하면 문서의 다른 절에 있는 관련 근거를 놓칠 수 있다는 점을 논의했습니다.</li>
               <li><strong>하이브리드 검색 제안 및 공동 구현.</strong> 팀원들과 RAG 검색 방식을 학습하고, 회의에서 벡터 검색과 BM25 키워드 검색을 결합하는 방식을 제안해 함께 구현했습니다.</li>
             </ul>
+            <p>함께 구현한 하이브리드 검색은 의미 기반 벡터 검색과 BM25 키워드 검색의 후보를 합치는 방식입니다. 공개 서버의 기본 질의는 벡터 검색으로 시작해 앞뒤 조각과 같은 절을 추가하는 GraphRAG 경로를 사용합니다. <a class="back-link" href="https://github.com/DocFusionX/server/blob/main/app/services/rag/vector_store.py#L48">하이브리드 검색 코드 <span aria-hidden="true">↗</span></a></p>
           </section>
           <section aria-labelledby="team-result-title">
             <h2 id="team-result-title">팀 결과물</h2>
-            <p>팀은 검색으로 찾은 텍스트 조각을 시작점으로 앞뒤 조각과 같은 절의 텍스트를 함께 찾아 문맥을 확장하는 GraphRAG 데모를 발표했습니다. THU AICOSS 해커톤에서 팀으로 <strong>Best Software Engineering Award</strong>를 수상했습니다.</p>
+            <p>팀은 EU AI Act PDF를 활용한 GraphRAG 데모를 발표했고, THU AICOSS 해커톤에서 <strong>Best Software Engineering Award</strong>를 팀으로 수상했습니다.</p>
+            <table class="docfusionx-results">
+              <caption>EU AI Act PDF 질의 사례</caption>
+              <thead>
+                <tr><th scope="col">평가 항목</th><th scope="col">기본 RAG</th><th scope="col">DocFusionX</th></tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">조항 전체 찾기</th><td>15개 초과 누락</td><td>최대 4개 누락</td></tr>
+                <tr><th scope="row">조항 수 집계</th><td>집계 실패</td><td>85개 집계</td></tr>
+                <tr><th scope="row">상위 제목 식별</th><td>3개 미만</td><td>11개 이상</td></tr>
+              </tbody>
+            </table>
+            <p>표의 수치는 팀 발표자료에 기록된 개별 질의의 결과입니다. 여러 문서를 함께 검색한 사례에서는 일부 관련 항목을 찾았고, 관련 항목을 빠짐없이 찾는 과제는 남았습니다.</p>
             <ul>
               <li><a class="back-link" href="https://youtu.be/LaFrL_qihyg">팀 데모 영상 <span aria-hidden="true">↗</span></a></li>
               <li><a class="back-link" href="https://github.com/DocFusionX/client">프론트엔드 저장소 <span aria-hidden="true">↗</span></a></li>
