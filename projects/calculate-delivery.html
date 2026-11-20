@@ -7,7 +7,7 @@
   <meta name="description" content="2026 SKKU × Microsoft Agenthon에 제출한 Team Bgent의 자동차 납기 계산 및 설비 장애 대응 에이전트 프로젝트입니다.">
   <title>CalculateDelivery · 자동차 납기 대응 에이전트 | AI Research Portfolio</title>
   <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="../assets/style.css?v=agenthon-results">
+  <link rel="stylesheet" href="../assets/style.css?v=agenthon-design">
   <script src="../assets/app.js" defer></script>
 </head>
 <body>
@@ -62,6 +62,22 @@
                 <p>정비 담당자가 복구 시간을 확정하면 영향 주문을 다시 계산합니다. 주문 변경 승인과 반영은 별도로 구현해 시험했습니다.</p>
               </li>
             </ol>
+            <h3 class="bgent-design-heading" id="design-images-title">시스템 및 업무 흐름 설계도</h3>
+            <p id="design-images-note">시스템 설계도는 Azure Functions와 Dataverse를 사용하는 확장안을 보여줍니다. 대회 제출본은 Power Automate와 Excel Office Scripts로 구현했고, 납기 대안 시연은 What-if 비교까지 진행했습니다.</p>
+            <div class="event-photos bgent-design-images" role="group" aria-labelledby="design-images-title" aria-describedby="design-images-note">
+              <figure>
+                <a href="../assets/calculate-delivery/system-architecture.jpg" aria-label="시스템 아키텍처 설계도 크게 보기">
+                  <img src="../assets/calculate-delivery/system-architecture.jpg" width="1448" height="1086" loading="lazy" decoding="async" alt="Copilot Studio 에이전트가 정책 검사, 일정 계산, 주문 조회를 호출하고 담당자 승인을 거쳐 Dataverse에 반영하는 확장 설계도">
+                </a>
+                <figcaption>시스템 아키텍처 설계도</figcaption>
+              </figure>
+              <figure>
+                <a href="../assets/calculate-delivery/decision-workflow.jpg" aria-label="업무 흐름 설계도 크게 보기">
+                  <img src="../assets/calculate-delivery/decision-workflow.jpg" width="1060" height="1484" loading="lazy" decoding="async" alt="딜러 문의와 설비 장애가 각각 접수된 뒤 납기 계산, 대안 비교, 담당자 승인, 변경 반영, 알림으로 이어지는 흐름 설계도">
+                </a>
+                <figcaption>업무 흐름 설계도</figcaption>
+              </figure>
+            </div>
           </section>
           <section aria-labelledby="results-title">
             <h2 id="results-title">시연 및 시험 결과</h2>

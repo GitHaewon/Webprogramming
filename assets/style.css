@@ -418,3 +418,18 @@
   aspect-ratio: auto;
   background: var(--white);
 }
+
+.bgent-design-heading {
+  margin: 22px 0 8px;
+  font-size: 18px;
+}
+
+.bgent-design-images {
+  margin-top: 12px;
+}
+
+.bgent-design-images img {
+  max-height: 252px;
+  aspect-ratio: 4 / 3;
+  background: var(--white);
+}
