@@ -693,3 +693,38 @@
 .detail-main .sub-heading {
   margin-top: 28px;
 }
+
+.awards-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 280px;
+  gap: 40px;
+  align-items: start;
+}
+
+.awards-layout .publication-row p a {
+  color: var(--teal-dark);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.award-certificate {
+  margin: 0;
+}
+
+@media (max-width: 860px) {
+  .awards-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .award-certificate {
+    max-width: 320px;
+  }
+}
+
+.awards-section {
+  background: #fff;
+}
+
+.publications-section {
+  background: var(--paper);
+}
