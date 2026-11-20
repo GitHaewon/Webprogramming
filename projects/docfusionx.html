@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ko" id="top">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101b2e">
+  <meta name="description" content="EU AI Act PDF로 기본 RAG를 테스트하고 하이브리드 검색을 제안·구현한 DocFusionX 팀 프로젝트의 기여를 소개합니다.">
+  <title>DocFusionX | AI Research Portfolio</title>
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/style.css">
+  <script src="../assets/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">본문으로 바로 가기</a>
+  <header class="site-header"><div class="container header-inner"><a class="brand" href="../index.html" aria-label="연구 포트폴리오 홈"><span class="brand-mark" aria-hidden="true">R<span class="brand-dot">.</span></span><span class="brand-copy"><strong>Research Archive</strong><small>AI · DATA · PRACTICE</small></span></a><button class="menu-toggle" type="button" aria-controls="primary-nav" aria-expanded="false" aria-label="메뉴 열기"><span></span><span></span><span></span></button><nav class="nav" id="primary-nav" aria-label="주 메뉴"><a href="../index.html#home">Home</a><a href="../index.html#research">Research</a><a href="../index.html#projects">Projects</a><a href="../index.html#activities">Activities</a><a href="../index.html#publications">Publications</a><a href="../index.html#skills">Skills</a><a class="nav-contact" href="../index.html#contact">CV &amp; Contact ↗</a></nav></div></header>
+  <main id="main">
+    <section class="detail-hero" aria-labelledby="project-title">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="현재 위치">
+          <a href="../index.html">Home</a><span aria-hidden="true">/</span>
+          <a href="../index.html#projects">Projects</a><span aria-hidden="true">/</span>
+          <span aria-current="page">DocFusionX</span>
+        </nav>
+        <p class="detail-kicker">THU AICOSS HACKATHON · 2026년 2월</p>
+        <h1 id="project-title">DocFusionX</h1>
+        <p>긴 PDF의 절 구조를 활용해 질문에 필요한 근거를 찾는 GraphRAG 팀 프로젝트입니다.</p>
+        <div class="detail-chips">
+          <span class="status status-done">팀 데모 발표</span>
+          <span>GraphRAG</span>
+          <span>하이브리드 검색</span>
+        </div>
+      </div>
+    </section>
+    <div class="container detail-body">
+      <div class="detail-layout">
+        <div class="detail-main">
+          <section aria-labelledby="contribution-title">
+            <h2 id="contribution-title">본인 기여</h2>
+            <ul>
+              <li><strong>초기 데모 제작 및 테스트.</strong> 기본 RAG로 데모를 만들고 EU AI Act PDF를 입력해 질의응답을 테스트했습니다.</li>
+              <li><strong>검색 결과 공동 분석.</strong> 팀원들과 응답을 검토하면서, 유사한 텍스트 조각만 검색하면 문서의 다른 절에 있는 관련 근거를 놓칠 수 있다는 점을 논의했습니다.</li>
+              <li><strong>하이브리드 검색 제안 및 공동 구현.</strong> 팀원들과 RAG 검색 방식을 학습하고, 회의에서 벡터 검색과 BM25 키워드 검색을 결합하는 방식을 제안해 함께 구현했습니다.</li>
+            </ul>
+          </section>
+          <section aria-labelledby="team-result-title">
+            <h2 id="team-result-title">팀 결과물</h2>
+            <p>팀은 검색으로 찾은 텍스트 조각을 시작점으로 앞뒤 조각과 같은 절의 텍스트를 함께 찾아 문맥을 확장하는 GraphRAG 데모를 발표했습니다.</p>
+            <ul>
+              <li><a class="back-link" href="https://youtu.be/LaFrL_qihyg">팀 데모 영상 <span aria-hidden="true">↗</span></a></li>
+              <li><a class="back-link" href="https://github.com/DocFusionX/client">프론트엔드 저장소 <span aria-hidden="true">↗</span></a></li>
+              <li><a class="back-link" href="https://github.com/DocFusionX/server">백엔드 저장소 <span aria-hidden="true">↗</span></a></li>
+            </ul>
+          </section>
+          <a class="back-link" href="../index.html#projects"><span aria-hidden="true">←</span> 프로젝트 목록으로</a>
+        </div>
+        <aside class="detail-aside" aria-labelledby="project-facts">
+          <h2 id="project-facts">프로젝트 정보</h2>
+          <dl>
+            <div><dt>구분</dt><dd>THU AICOSS 해커톤 팀 프로젝트</dd></div>
+            <div><dt>참여 시기</dt><dd>2026년 2월</dd></div>
+            <div><dt>테스트 문서</dt><dd>EU AI Act PDF</dd></div>
+            <div><dt>팀 저장소</dt><dd><a class="back-link" href="https://github.com/DocFusionX">DocFusionX on GitHub <span aria-hidden="true">↗</span></a></dd></div>
+          </dl>
+        </aside>
+      </div>
+    </div>
+  </main>
+  <footer class="site-footer"><div class="container footer-inner"><div><strong>Research Archive<span>.</span></strong><p>AI · DATA · PRACTICE</p></div><p>확인된 기록을 바탕으로 확장하는 연구 포트폴리오</p><a href="#top">맨 위로 ↑</a></div></footer>
+</body>
+</html>
