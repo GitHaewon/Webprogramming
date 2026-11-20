@@ -300,3 +300,71 @@
 }
 .detail-main ol{padding-left:20px}
 .detail-main ol li+li{margin-top:6px}
+
+.bgent-image {
+  background:
+    radial-gradient(ellipse at 76% 18%, rgba(153, 211, 245, .23), transparent 60%),
+    linear-gradient(145deg, #182740, #24445d);
+}
+
+.bgent-workflow-mark {
+  position: absolute;
+  inset: 34% 16% 22%;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: center;
+  gap: 11%;
+}
+
+.bgent-workflow-mark::before {
+  position: absolute;
+  inset: 50% 14% auto;
+  height: 1px;
+  content: "";
+  background: #8bd3c4;
+}
+
+.bgent-workflow-mark > span {
+  position: relative;
+  aspect-ratio: 1;
+  border: 1px solid #8bd3c4;
+  border-radius: 7px;
+  background: #27465b;
+}
+
+.bgent-workflow-mark > span:nth-child(2) {
+  background: #9de2d0;
+}
+
+.bgent-flow {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.detail-main .bgent-flow > li {
+  margin: 0;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  background: var(--paper);
+}
+
+.bgent-flow h3 {
+  margin: 0 0 6px;
+  color: var(--ink);
+  font-size: 16px;
+}
+
+.bgent-flow p {
+  margin: 0;
+}
+
+@media (max-width: 560px) {
+  .bgent-flow {
+    grid-template-columns: 1fr;
+  }
+}

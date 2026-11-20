@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ko" id="top">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101b2e">
+  <meta name="description" content="2026 SKKU × Microsoft Agenthon에 제출한 Team Bgent의 자동차 납기 계산 및 설비 장애 대응 에이전트 프로젝트입니다.">
+  <title>CalculateDelivery · 자동차 납기 대응 에이전트 | AI Research Portfolio</title>
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/style.css?v=agenthon">
+  <script src="../assets/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">본문으로 바로 가기</a>
+  <header class="site-header"><div class="container header-inner"><a class="brand" href="../index.html" aria-label="연구 포트폴리오 홈"><span class="brand-mark" aria-hidden="true">R<span class="brand-dot">.</span></span><span class="brand-copy"><strong>Research Archive</strong><small>AI · DATA · PRACTICE</small></span></a><button class="menu-toggle" type="button" aria-controls="primary-nav" aria-expanded="false" aria-label="메뉴 열기"><span></span><span></span><span></span></button><nav class="nav" id="primary-nav" aria-label="주 메뉴"><a href="../index.html#home">Home</a><a href="../index.html#research">Research</a><a href="../index.html#projects">Projects</a><a href="../index.html#activities">Activities</a><a href="../index.html#publications">Publications</a><a href="../index.html#skills">Skills</a><a class="nav-contact" href="../index.html#contact">CV &amp; Contact ↗</a></nav></div></header>
+  <main id="main">
+    <section class="detail-hero" aria-labelledby="project-title">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="현재 위치">
+          <a href="../index.html">Home</a><span aria-hidden="true">/</span>
+          <a href="../index.html#projects">Projects</a><span aria-hidden="true">/</span>
+          <span aria-current="page">CalculateDelivery</span>
+        </nav>
+        <p class="detail-kicker">2026 SKKU × Microsoft Agenthon · Team Bgent</p>
+        <h1 id="project-title">CalculateDelivery · 자동차 납기 대응 에이전트</h1>
+        <p>주문 옵션, 부품 재고·입고, 생산라인 일정을 함께 계산해 딜러와 생산계획·정비 담당자가 납기 변경에 대응하도록 돕는 대회 프로토타입입니다.</p>
+        <div class="detail-chips">
+          <span class="status status-done">대회 제출</span>
+          <span>AI 에이전트</span>
+          <span>생산 일정 · 납기 예측</span>
+        </div>
+      </div>
+    </section>
+    <div class="container detail-body">
+      <div class="detail-layout">
+        <div class="detail-main">
+          <section aria-labelledby="problem-title">
+            <h2 id="problem-title">문제 정의</h2>
+            <p>부품 입고가 늦거나 설비가 멈추면 여러 주문의 납기가 한꺼번에 바뀔 수 있습니다. 생산계획 담당자와 정비 담당자, 딜러가 주문·재고·라인 일정을 각각 대조해야 하면 어떤 주문부터 대응할지, 특근이나 옵션 변경이 납기에 어떤 영향을 주는지 빠르게 판단하기 어렵습니다.</p>
+          </section>
+          <section aria-labelledby="contribution-title">
+            <h2 id="contribution-title">본인 기여</h2>
+            <p>Team Bgent의 팀장으로 프로젝트 기획과 구현, 통합, 검증을 총괄했습니다. 딜러의 주문 조회, 생산계획 담당자의 납기 대안 비교, 정비 담당자의 복구 시간 확인을 사용자 역할별 흐름으로 정리하고, 팀이 만든 계산 도구와 에이전트 대화를 연결하는 작업을 이끌었습니다.</p>
+          </section>
+          <section aria-labelledby="design-title">
+            <h2 id="design-title">에이전트와 계산 엔진의 역할</h2>
+            <ol class="bgent-flow" role="list">
+              <li>
+                <h3>1. 요청 해석</h3>
+                <p>Copilot Studio 에이전트가 문의를 해석하고 등록된 데모 사용자 코드와 역할에 맞는 도구를 선택합니다.</p>
+              </li>
+              <li>
+                <h3>2. 납기 계산</h3>
+                <p>Power Automate가 Office Scripts를 호출합니다. 스크립트는 역할을 다시 확인한 뒤 Excel 데이터로 예상 납기와 위험 상태를 계산합니다.</p>
+              </li>
+              <li>
+                <h3>3. 대안 비교와 장애 대응</h3>
+                <p>에이전트는 계산 엔진이 반환한 값으로 조건을 충족한 What-if 대안을 보여줍니다. 복구 시간이 미정인 장애는 대기 상태로 두고 Teams로 확인을 요청합니다.</p>
+              </li>
+              <li>
+                <h3>4. 담당자 확인</h3>
+                <p>정비 담당자가 복구 시간을 확정하면 영향 주문을 다시 계산합니다. 주문 변경 승인과 반영은 별도로 구현해 시험했습니다.</p>
+              </li>
+            </ol>
+          </section>
+          <section aria-labelledby="results-title">
+            <h2 id="results-title">시연 및 시험 결과</h2>
+            <p>생산라인 1개, 설비 1대, 주문 20건으로 구성한 가상 데이터에서 시험했습니다.</p>
+            <ul>
+              <li><strong>납기 대안 비교.</strong> 한 주문의 예상 납기는 10월 20일(위반)이었고, 특근을 적용하는 가정에서는 10월 19일(위험)로 계산됐습니다. 시연에서는 원본 주문을 유지한 채 두 결과를 비교했습니다.</li>
+              <li><strong>설비 장애 대응.</strong> 복구에 36시간과 72시간이 걸리는 두 경우를 계산하고, 시간 확정 전에는 장애를 대기 상태로 유지했습니다. 시험에서 복구 시간을 36시간으로 확정한 뒤 영향 주문 19건을 다시 계산했습니다. 이 집계에는 장애 기준 시각 이전에 배정된 일부 주문도 포함됩니다.</li>
+              <li><strong>예외 응답.</strong> 이미 요청 납기 범위에 있는 주문에는 개선이 필요 없다고 안내했고, 존재하지 않는 주문에는 주문 ID를 다시 확인하도록 응답했습니다.</li>
+            </ul>
+          </section>
+          <section aria-labelledby="next-title">
+            <h2 id="next-title">확장 방향</h2>
+            <p>Microsoft 로그인과 사용자 역할을 연결하고, 설비·공정·주문 관계를 반영해 실제로 장애 설비를 거치는 주문을 가려내는 것이 후속 과제입니다. 동시 사용과 계산 규모를 늘릴 때는 Dataverse와 Azure Functions로 확장하는 방향을 구상했습니다.</p>
+          </section>
+          <a class="back-link" href="../index.html#projects"><span aria-hidden="true">←</span> 프로젝트 목록으로</a>
+        </div>
+        <aside class="detail-aside" aria-labelledby="project-facts">
+          <h2 id="project-facts">프로젝트 정보</h2>
+          <dl>
+            <div><dt>대회</dt><dd>2026 SKKU × Microsoft Agenthon</dd></div>
+            <div><dt>제출</dt><dd>2026년 10월</dd></div>
+            <div><dt>역할</dt><dd>Team Bgent 팀장</dd></div>
+            <div><dt>구현 기술</dt><dd>Copilot Studio · Power Automate · Excel Office Scripts · Teams</dd></div>
+            <div><dt>개발 자료</dt><dd><a class="back-link" href="https://github.com/GitHaewon/MS.Agent">초기 Python 엔진 저장소 <span aria-hidden="true">↗</span></a></dd></div>
+          </dl>
+        </aside>
+      </div>
+    </div>
+  </main>
+  <footer class="site-footer"><div class="container footer-inner"><div><strong>Research Archive<span>.</span></strong><p>AI · DATA · PRACTICE</p></div><p>확인된 기록을 바탕으로 확장하는 연구 포트폴리오</p><a href="#top">맨 위로 ↑</a></div></footer>
+</body>
+</html>
