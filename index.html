@@ -11,8 +11,8 @@
   <meta property="og:description" content="문제를 연구 질문으로, 아이디어를 검증 가능한 프로젝트로.">
   <title>AI Research Portfolio | 연구 포트폴리오</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="assets/style.css?v=industrial-sim">
-  <script src="assets/app.js" defer></script>
+  <link rel="stylesheet" href="assets/style.css?v=leverage-agent">
+  <script src="assets/app.js?v=multi-category" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">본문으로 바로 가기</a>
@@ -64,7 +64,7 @@
 
     <section class="section projects-section" id="projects" aria-labelledby="projects-title">
       <div class="container"><div class="section-heading"><div><p class="section-kicker">02 / SELECTED WORK</p><h2 id="projects-title" class="section-title">프로젝트 아카이브<span class="accent-period">.</span></h2></div><p class="section-lead">상태와 근거가 확인되는 만큼만 공개합니다. 상세 페이지에는 문제, 검토 방법, 확인할 결과를 분리했습니다.</p></div>
-        <div class="filter-bar" role="group" aria-label="프로젝트 분야 필터"><button class="filter-button is-active" type="button" data-filter="all" aria-pressed="true">전체 <span>08</span></button><button class="filter-button" type="button" data-filter="nlp" aria-pressed="false">NLP</button><button class="filter-button" type="button" data-filter="vision" aria-pressed="false">컴퓨터 비전</button><button class="filter-button" type="button" data-filter="robotics" aria-pressed="false">로보틱스</button><button class="filter-button" type="button" data-filter="decision" aria-pressed="false">AI 의사결정</button><button class="filter-button" type="button" data-filter="public" aria-pressed="false">공공데이터</button></div>
+        <div class="filter-bar" role="group" aria-label="프로젝트 분야 필터"><button class="filter-button is-active" type="button" data-filter="all" aria-pressed="true">전체 <span>11</span></button><button class="filter-button" type="button" data-filter="nlp" aria-pressed="false">NLP</button><button class="filter-button" type="button" data-filter="vision" aria-pressed="false">컴퓨터 비전</button><button class="filter-button" type="button" data-filter="robotics" aria-pressed="false">로보틱스</button><button class="filter-button" type="button" data-filter="decision" aria-pressed="false">AI 의사결정</button><button class="filter-button" type="button" data-filter="automation" aria-pressed="false">자동화</button><button class="filter-button" type="button" data-filter="agent" aria-pressed="false">Agent</button><button class="filter-button" type="button" data-filter="public" aria-pressed="false">공공데이터</button></div>
         <div class="project-grid" id="project-grid">
           <article class="project-card" data-category="nlp">
             <a href="projects/docfusionx.html" class="project-image docfusionx-image" aria-label="DocFusionX 프로젝트 상세 보기">
@@ -147,6 +147,18 @@
               <h3><a href="projects/ai-ic-simulation.html">AI 투자위원회 시뮬레이션 · IC Memo 자동 생성</a></h3>
               <p>6개 AI 에이전트가 투자위원회 역할을 나눠 토론하고, DART 공시 기반 RAG와 코드로 계산한 충격 시나리오를 근거로 투자 검토 보고서 초안을 자동 생성합니다.</p>
               <div class="project-footer"><span>LangGraph · Hybrid RAG · IRR 시뮬레이션</span><a href="projects/ai-ic-simulation.html" aria-label="AI 투자위원회 시뮬레이션 자세히 보기">자세히 보기 <span aria-hidden="true">↗</span></a></div>
+            </div>
+          </article>
+          <article class="project-card" data-category="automation agent">
+            <a href="projects/leverage-agent.html" class="project-image leverage-image" aria-label="AI Trading Copilot 프로젝트 상세 보기">
+              <span class="leverage-signal" aria-hidden="true"><span></span><span></span><span></span></span>
+              <span class="image-corner">SHADOW EVALUATION</span>
+            </a>
+            <div class="project-content">
+              <div class="project-meta"><span class="status status-unverified">Shadow 프로토타입</span><span>자동화 · Agent</span></div>
+              <h3><a href="projects/leverage-agent.html">AI Trading Copilot · 거래 판단 자동화</a></h3>
+              <p>암호화폐 선물 데이터를 수집하고, 규칙 기반 후보 생성과 GPT 검토, 리스크 검사, 가상 거래 기록을 연결한 의사결정 지원 도구입니다.</p>
+              <div class="project-footer"><span>Python · FastAPI · Next.js</span><a href="projects/leverage-agent.html" aria-label="AI Trading Copilot 자세히 보기">자세히 보기 <span aria-hidden="true">↗</span></a></div>
             </div>
           </article>
           <article class="project-card" data-category="nlp"><a href="projects/sarcasm-nlp.html" class="project-image" aria-label="대화 맥락 기반 한국어 반어 탐지 프로젝트 상세 보기"><img src="assets/project-nlp.svg" alt="문장과 맥락의 관계를 표현한 추상 그래픽" width="960" height="580" loading="lazy"><span class="image-corner">01 / NLP</span></a><div class="project-content"><div class="project-meta"><span class="status status-active">진행 중</span><span>Natural Language Processing</span></div><h3><a href="projects/sarcasm-nlp.html">대화 맥락 기반 한국어 반어 탐지</a></h3><p>앞선 대화를 함께 읽고 마지막 발화가 반어인지 판별하는 개인 연구 프로젝트. KoCoSa 데이터로 모델을 비교하고 라벨 품질을 직접 검수하며, 국내 학술대회 투고를 목표로 진행 중입니다.</p><div class="project-footer"><span>NLP · 텍스트 분류 · 데이터 품질</span><a href="projects/sarcasm-nlp.html" aria-label="대화 맥락 기반 한국어 반어 탐지 자세히 보기">자세히 보기 <span aria-hidden="true">↗</span></a></div></div></article>

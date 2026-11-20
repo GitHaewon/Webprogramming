@@ -29,7 +29,10 @@
       item.classList.toggle('is-active', selected);
       item.setAttribute('aria-pressed', String(selected));
     });
-    cards.forEach(card => { card.hidden = category !== 'all' && card.dataset.category !== category; });
+    cards.forEach(card => {
+      const categories = card.dataset.category.split(/\s+/);
+      card.hidden = category !== 'all' && !categories.includes(category);
+    });
   }));
 
   if ('IntersectionObserver' in window && document.body.querySelector('.nav')) {

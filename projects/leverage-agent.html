@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ko" id="top">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101b2e">
+  <meta name="description" content="시장 데이터 수집, 규칙 기반 거래 후보 생성, GPT 검토, 리스크 검사, Shadow 기록을 연결한 AI Trading Copilot 프로젝트입니다.">
+  <title>AI Trading Copilot · 거래 판단 자동화 | AI Research Portfolio</title>
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/style.css?v=leverage-agent">
+  <script src="../assets/app.js?v=multi-category" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">본문으로 바로 가기</a>
+  <header class="site-header"><div class="container header-inner"><a class="brand" href="../index.html" aria-label="연구 포트폴리오 홈"><span class="brand-mark" aria-hidden="true">R<span class="brand-dot">.</span></span><span class="brand-copy"><strong>Research Archive</strong><small>AI · DATA · PRACTICE</small></span></a><button class="menu-toggle" type="button" aria-controls="primary-nav" aria-expanded="false" aria-label="메뉴 열기"><span></span><span></span><span></span></button><nav class="nav" id="primary-nav" aria-label="주 메뉴"><a href="../index.html#home">Home</a><a href="../index.html#research">Research</a><a href="../index.html#projects">Projects</a><a href="../index.html#activities">Activities</a><a href="../index.html#publications">Publications</a><a href="../index.html#skills">Skills</a><a class="nav-contact" href="../index.html#contact">CV &amp; Contact ↗</a></nav></div></header>
+  <main id="main">
+    <section class="detail-hero" aria-labelledby="project-title">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="현재 위치">
+          <a href="../index.html">Home</a><span aria-hidden="true">/</span>
+          <a href="../index.html#projects">Projects</a><span aria-hidden="true">/</span>
+          <span aria-current="page">AI Trading Copilot</span>
+        </nav>
+        <p class="detail-kicker">자동화 · Agent</p>
+        <h1 id="project-title">AI Trading Copilot · 거래 판단 자동화</h1>
+        <p>암호화폐 선물 시장 데이터를 바탕으로 거래 후보를 만들고, 검토와 리스크 판정을 거쳐 가상 거래와 판단 근거를 남기는 의사결정 지원 시스템입니다.</p>
+        <div class="detail-chips">
+          <span class="status status-unverified">Shadow 프로토타입</span>
+          <span>규칙 기반 의사결정</span>
+          <span>GPT 리뷰어</span>
+        </div>
+      </div>
+    </section>
+    <div class="container detail-body">
+      <div class="detail-layout">
+        <div class="detail-main">
+          <section aria-labelledby="problem-title">
+            <h2 id="problem-title">문제 정의</h2>
+            <p>시장 데이터 수집부터 거래 후보 계산, AI 검토, 리스크 판단까지 한 번에 처리하면 어떤 근거로 후보가 만들어졌고 어느 단계에서 보류됐는지 돌아보기 어렵습니다. 각 판단의 역할을 나누고, 같은 흐름을 반복 실행해 결정 과정을 비교할 수 있도록 구성했습니다.</p>
+          </section>
+          <section aria-labelledby="implementation-title">
+            <h2 id="implementation-title">구현한 자동화 흐름</h2>
+            <ol>
+              <li><strong>시장 데이터 수집과 분석.</strong> 가격·거래량·파생시장 지표를 수집하고 시장 국면과 기술 지표를 계산합니다.</li>
+              <li><strong>규칙 기반 후보 생성.</strong> DecisionEngine이 시장 국면에 맞는 전략을 고르고 거래 후보와 가격 조건을 계산합니다.</li>
+              <li><strong>Agent 검토.</strong> GPT 기반 ReviewerAgent가 후보를 승인하거나 거절합니다. 진입가·손절가·목표가 등의 수치는 규칙 엔진에서 정한 값을 유지합니다.</li>
+              <li><strong>리스크 검사와 기록.</strong> 별도의 RiskEngine이 손절 조건과 손실 한도를 검사합니다. 필수 검증이 실패하면 보류하고, 통과한 결정은 Shadow 모드에서 가상 체결로 기록합니다.</li>
+            </ol>
+          </section>
+          <section aria-labelledby="evaluation-title">
+            <h2 id="evaluation-title">Shadow 실험과 모니터링</h2>
+            <p>Shadow 모드는 시장 데이터로 판단 흐름을 실행하고 가상 체결을 기록합니다. 후보, AI 검토 결과, 리스크 검사와 보류 사유를 구조화된 로그로 남기며, 동일 신호에 대한 기준 전략과 청산 규칙을 바꾼 실험안을 따로 저장해 비교할 수 있도록 구성했습니다.</p>
+            <p>FastAPI로 판단 로그와 가상 거래 기록을 조회하고, Next.js 대시보드에서 거래와 리스크 정보를 확인할 수 있게 만들었습니다. 실거래 기능의 기본 설정은 비활성화이며, 공개 자료는 구현과 Shadow 검증 범위를 다룹니다.</p>
+          </section>
+          <a class="back-link" href="../index.html#projects"><span aria-hidden="true">←</span> 프로젝트 목록으로</a>
+        </div>
+        <aside class="detail-aside" aria-labelledby="project-facts">
+          <h2 id="project-facts">프로젝트 정보</h2>
+          <dl>
+            <div><dt>분류</dt><dd>자동화 · Agent</dd></div>
+            <div><dt>구현</dt><dd>Python · FastAPI · Next.js</dd></div>
+            <div><dt>데이터와 작업 처리</dt><dd>PostgreSQL · Redis · Celery · Docker</dd></div>
+            <div><dt>저장소</dt><dd><a class="back-link" href="https://github.com/GitHaewon/Leverage_Agnet">GitHaewon/Leverage_Agnet <span aria-hidden="true">↗</span></a></dd></div>
+            <div><dt>설계 문서</dt><dd><a class="back-link" href="https://github.com/GitHaewon/Leverage_Agnet/blob/main/docs/DECISION_FLOW.md">의사결정 흐름 <span aria-hidden="true">↗</span></a></dd></div>
+          </dl>
+        </aside>
+      </div>
+    </div>
+  </main>
+  <footer class="site-footer"><div class="container footer-inner"><div><strong>Research Archive<span>.</span></strong><p>AI · DATA · PRACTICE</p></div><p>확인된 기록을 바탕으로 확장하는 연구 포트폴리오</p><a href="#top">맨 위로 ↑</a></div></footer>
+</body>
+</html>

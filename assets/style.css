@@ -440,3 +440,35 @@
   height: auto;
   background: #000;
 }
+
+.leverage-image {
+  background:
+    radial-gradient(ellipse at 78% 20%, rgba(157, 226, 208, .2), transparent 65%),
+    linear-gradient(145deg, #222743, #28545b);
+}
+
+.leverage-signal {
+  position: absolute;
+  inset: 29% 20% 19%;
+  display: grid;
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+  gap: 12%;
+  border-left: 1px solid #8bd3c4;
+}
+
+.leverage-signal > span {
+  width: 82%;
+  border: 1px solid #8bd3c4;
+  border-left: 0;
+  border-radius: 0 4px 4px 0;
+  background: rgba(157, 226, 208, .12);
+}
+
+.leverage-signal > span:nth-child(2) {
+  width: 100%;
+  background: rgba(157, 226, 208, .42);
+}
+
+.leverage-signal > span:nth-child(3) {
+  width: 62%;
+}
