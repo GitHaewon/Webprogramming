@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="ko" id="top">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101b2e">
+  <meta name="description" content="6개 AI 에이전트가 투자위원회 역할을 나눠 토론하고, DART 공시 기반 RAG와 결정론적 충격 시뮬레이션으로 투자 검토 보고서(IC Memo)를 자동 생성하는 공모전 개인 프로젝트입니다.">
+  <title>AI 투자위원회 시뮬레이션 · IC Memo 자동 생성 | AI Research Portfolio</title>
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/style.css?v=ai-ic-simulation">
+  <script src="../assets/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">본문으로 바로 가기</a>
+  <header class="site-header"><div class="container header-inner"><a class="brand" href="../index.html" aria-label="연구 포트폴리오 홈"><span class="brand-mark" aria-hidden="true">R<span class="brand-dot">.</span></span><span class="brand-copy"><strong>Research Archive</strong><small>AI · DATA · PRACTICE</small></span></a><button class="menu-toggle" type="button" aria-controls="primary-nav" aria-expanded="false" aria-label="메뉴 열기"><span></span><span></span><span></span></button><nav class="nav" id="primary-nav" aria-label="주 메뉴"><a href="../index.html#home">Home</a><a href="../index.html#research">Research</a><a href="../index.html#projects">Projects</a><a href="../index.html#activities">Activities</a><a href="../index.html#publications">Publications</a><a href="../index.html#skills">Skills</a><a class="nav-contact" href="../index.html#contact">CV &amp; Contact ↗</a></nav></div></header>
+  <main id="main">
+    <section class="detail-hero" aria-labelledby="project-title">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="현재 위치">
+          <a href="../index.html">Home</a><span aria-hidden="true">/</span>
+          <a href="../index.html#projects">Projects</a><span aria-hidden="true">/</span>
+          <span aria-current="page">AI 투자위원회 시뮬레이션</span>
+        </nav>
+        <p class="detail-kicker">공모전 출품 · 개인 프로젝트</p>
+        <h1 id="project-title">AI 투자위원회 시뮬레이션 · IC Memo 자동 생성</h1>
+        <p>여러 AI가 실제 투자위원회처럼 역할을 나눠 토론하고, 공시 데이터와 충격 시나리오 계산을 근거로 투자 검토 보고서(IC Memo) 초안을 자동으로 만드는 시스템입니다. 기획부터 구현까지 혼자 진행했습니다.</p>
+        <div class="detail-chips">
+          <span class="status status-done">완료</span>
+          <span>멀티 에이전트</span>
+          <span>Hybrid RAG</span>
+          <span>금융 시뮬레이션</span>
+        </div>
+      </div>
+    </section>
+    <div class="container detail-body">
+      <div class="detail-layout">
+        <div class="detail-main">
+          <section aria-labelledby="background-title">
+            <p class="detail-label">01 / BACKGROUND</p>
+            <h2 id="background-title">문제 배경</h2>
+            <p>투자사는 큰 금액을 투자하기 전에 투자위원회(Investment Committee, IC)를 엽니다. 재무 분석, 리스크 심사, 찬반 토론을 거쳐 위원장이 결정을 내리는데, 공시 자료 수집부터 재무 모델과 보고서 작성까지 수 주가 걸립니다. 담당자 한 명의 관점에 치우치기 쉽고, 금리 인상이나 경기 침체 같은 시나리오를 매번 따로 계산하기도 번거롭습니다.</p>
+            <p>이 프로젝트는 <strong>여러 관점의 검토를 AI 에이전트로 나눠 맡기고, 숫자는 코드로 계산하고, 주장에는 공시 근거를 붙이는 방식</strong>으로 보고서 초안 작성 시간을 줄이는 것을 목표로 했습니다. 최종 판단은 사람이 하고, 시스템은 초안과 다각도 검토를 돕는 도구로 설계했습니다.</p>
+          </section>
+          <section aria-labelledby="system-title">
+            <p class="detail-label">02 / SYSTEM</p>
+            <h2 id="system-title">시스템 구성</h2>
+            <p>기업명, 산업, 투자 금액, 충격 시나리오를 입력하면 아래 순서로 처리됩니다.</p>
+            <ol class="bgent-flow">
+              <li><h3>① 공시 수집 · 기업 분류</h3><p>OpenDART API로 사업보고서와 재무제표를 가져오고, 기업을 초대형 상장사부터 스타트업까지 5단계로 분류해 유형에 맞는 수익률 가정을 적용합니다.</p></li>
+              <li><h3>② Hybrid RAG</h3><p>의미 기반 검색(ChromaDB + BGE 임베딩)과 키워드 검색(BM25)을 RRF로 합쳐 근거 문서를 찾고, 에이전트가 출처를 인용하게 합니다.</p></li>
+              <li><h3>③ 6개 에이전트 토론</h3><p>LangGraph로 데이터 수집·재무 분석·리스크·강세론·약세론 에이전트를 병렬로 실행하고, 위원장 에이전트가 투표를 종합해 결정합니다.</p></li>
+              <li><h3>④ 충격 시뮬레이션 · 보고서</h3><p>금리·환율·시장 충격 7개 시나리오의 IRR·MOIC를 계산하고, 결과를 6개 섹션의 IC Memo로 묶어 Markdown·JSON·PPTX로 내보냅니다.</p></li>
+            </ol>
+            <figure class="shot-figure">
+              <img src="../assets/ic-simulation/home.png" width="1440" height="900" loading="lazy" decoding="async" alt="AI 투자위원회 시뮬레이션 시스템 첫 화면. 왼쪽 사이드바에 기업명, 산업 분야, 투자 단계, 투자금액, 충격 시나리오 입력란이 있고 오른쪽에 투자 검토 보고서, 충격 시나리오 분석, AI 투자위원회 토론 탭이 있는 다크 테마 화면">
+              <figcaption>Streamlit 첫 화면 — 사이드바에 딜 정보와 충격 시나리오를 입력하고, 보고서·충격 분석·토론 기록 3개 탭에서 결과를 확인합니다.</figcaption>
+            </figure>
+          </section>
+          <section aria-labelledby="simulation-title">
+            <p class="detail-label">03 / SIMULATION</p>
+            <h2 id="simulation-title">충격 시뮬레이션 실행 예시</h2>
+            <p>충격 시뮬레이션은 LLM 없이 코드로만 계산합니다. 아래는 삼성전자, 투자금 1억 달러 조건을 넣었을 때의 결과입니다. 시스템이 이 기업을 초대형 상장사로 분류해 기본 IRR <strong>16.0%</strong>, MOIC <strong>2.1x</strong>가 나왔고, 시장 40% 하락 시나리오에서는 IRR이 7.8%까지 떨어집니다.</p>
+            <figure class="shot-figure">
+              <img src="../assets/ic-simulation/shock-scenarios.png" width="1070" height="1160" loading="lazy" decoding="async" alt="충격 시나리오 분석 탭. 기본 IRR 16.0%에서 금리 상승, 환율 하락, 시장 하락 시나리오별 IRR이 15.1%에서 7.8%까지 내려가는 막대 그래프, MOIC 비교 그래프, 변수별 IRR 민감도를 보여 주는 토네이도 차트">
+              <figcaption>시나리오별 IRR·MOIC 비교와 토네이도 차트 — 엑싯 배수와 매출 성장률이 IRR을 가장 크게 흔드는 변수로 나타납니다.</figcaption>
+            </figure>
+            <figure class="shot-figure">
+              <img src="../assets/ic-simulation/irr-bridge-table.png" width="1070" height="890" loading="lazy" decoding="async" alt="기본 IRR 16.0%가 배수 변화 -3.8%, 성장률 변화 -2.2%, 금리 및 기타 -2.1%를 거쳐 시장 40% 하락 시 7.8%가 되는 IRR 브리지 차트와 7개 시나리오의 IRR, MOIC, 엑싯 가치 비교표">
+              <figcaption>최악 시나리오(시장 -40%)의 IRR 브리지와 전체 시나리오 비교표</figcaption>
+            </figure>
+            <p class="physical-ai-next">스크린샷은 프로젝트 코드의 기업 분류·충격 시뮬레이션 모듈을 실제로 실행해 만든 화면입니다. 이 실행에서는 DART 연동과 LLM 에이전트를 끄고 기업 유형별 기본 가정만 사용했습니다.</p>
+          </section>
+          <section aria-labelledby="decision-title">
+            <p class="detail-label">04 / KEY DECISIONS</p>
+            <h2 id="decision-title">개발하며 바꾼 설계</h2>
+            <ul>
+              <li><strong>계산은 코드, 해석은 AI.</strong> 처음에는 LLM에게 IRR 계산을 맡겼는데 값이 부정확했습니다. 그래서 IRR은 Newton-Raphson 방식으로 코드에서 계산하고, 에이전트는 그 숫자의 의미만 해석하도록 역할을 나눴습니다.</li>
+              <li><strong>기업 유형별 가정.</strong> 모든 기업에 같은 스타트업 가정을 쓰자 삼성전자에서 IRR 72%, MOIC 15x라는 비현실적인 값이 나왔습니다. 기업 분류 레이어를 추가하고 DART 영업이익률로 EBITDA 마진을 보정해 IRR 약 16%, MOIC 2.1x 수준으로 바로잡았습니다.</li>
+              <li><strong>검색 데이터 격리.</strong> 삼성전자를 분석하는데 데모용 가상 기업 문서가 검색 결과에 섞여 들어왔습니다. 기업명 메타데이터로 필터링해 다른 회사 데이터가 근거로 쓰이지 않게 했습니다.</li>
+              <li><strong>신중한 표현.</strong> 프롬프트를 v2.0으로 개편해 모든 출력을 한국어로 통일하고, "~일 가능성이 있습니다" 같은 확률적 표현을 쓰도록 했습니다. 위원장 에이전트에는 밸류에이션, 거버넌스, 투자 중요성, 전략적 적합성의 4대 판단 기준을 넣었습니다.</li>
+            </ul>
+          </section>
+          <section aria-labelledby="limit-title">
+            <p class="detail-label">05 / LIMITATIONS</p>
+            <h2 id="limit-title">한계와 개선 방향</h2>
+            <ul>
+              <li>공시 데이터가 부족한 기업에서는 에이전트가 추정치를 사실처럼 서술할 수 있어, 모든 출력은 사람이 검토해야 합니다.</li>
+              <li>충격 모델은 금리·환율·시장 3가지 변수만 다루고, 소수 지분 투자의 유동성 할인 같은 요소는 반영하지 않습니다.</li>
+              <li>사용자가 자유롭게 쓴 충격 시나리오 문장은 아직 계산 파라미터로 변환되지 않고, 미리 정한 7개 시나리오가 실행됩니다.</li>
+              <li>개선 방향: 실시간 시장 데이터와 뉴스 연동, 자유 입력 시나리오의 파라미터화, 업종별 분석 템플릿, LLM 출력 팩트체크</li>
+            </ul>
+          </section>
+          <a class="back-link" href="../index.html#projects"><span aria-hidden="true">←</span> 프로젝트 목록으로</a>
+        </div>
+        <aside class="detail-aside" aria-labelledby="project-facts">
+          <h2 id="project-facts">Project facts</h2>
+          <dl>
+            <div><dt>현재 상태</dt><dd>완료 · 공모전 출품</dd></div>
+            <div><dt>형태</dt><dd>개인 프로젝트</dd></div>
+            <div><dt>기간</dt><dd>2026.05 ~ 2026.06</dd></div>
+            <div><dt>본인 역할</dt><dd>기획, 에이전트 설계, RAG·시뮬레이션 구현, UI, 문서화까지 전 과정</dd></div>
+            <div><dt>기술</dt><dd>Python · LangGraph · Claude API · ChromaDB · BM25 · Pydantic · Streamlit · Plotly · python-pptx · OpenDART</dd></div>
+            <div><dt>자료 · 코드</dt><dd><a href="https://github.com/githaewon/ai-c-simulation" target="_blank" rel="noopener">GitHub 저장소 ↗</a></dd></div>
+          </dl>
+          <p>보고서와 토론 결과는 AI가 생성한 초안이며, 투자 판단을 대신하지 않습니다.</p>
+        </aside>
+      </div>
+    </div>
+  </main>
+  <footer class="site-footer"><div class="container footer-inner"><div><strong>Research Archive<span>.</span></strong><p>AI · DATA · PRACTICE</p></div><p>확인된 기록을 바탕으로 확장하는 연구 포트폴리오</p><a href="#top">맨 위로 ↑</a></div></footer>
+</body>
+</html>
