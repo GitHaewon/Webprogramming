@@ -433,3 +433,10 @@
   aspect-ratio: 4 / 3;
   background: var(--white);
 }
+
+.demo-video {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #000;
+}
