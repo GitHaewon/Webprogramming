@@ -7,7 +7,7 @@
   <meta name="description" content="2026 SKKU × Microsoft Agenthon에 제출한 Team Bgent의 자동차 납기 계산 및 설비 장애 대응 에이전트 프로젝트입니다.">
   <title>CalculateDelivery · 자동차 납기 대응 에이전트 | AI Research Portfolio</title>
   <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="../assets/style.css?v=agenthon-design">
+  <link rel="stylesheet" href="../assets/style.css?v=agenthon-mobile">
   <script src="../assets/app.js" defer></script>
 </head>
 <body>
@@ -82,6 +82,12 @@
           <section aria-labelledby="results-title">
             <h2 id="results-title">시연 및 시험 결과</h2>
             <p>생산라인 1개, 설비 1대, 주문 20건으로 구성한 가상 데이터에서 시험했습니다.</p>
+            <figure class="shot-figure phone-shot">
+              <a href="../assets/calculate-delivery/mobile-chat.jpg" aria-label="모바일에서 실행한 CalculateDelivery 화면 크게 보기">
+                <img src="../assets/calculate-delivery/mobile-chat.jpg" width="640" height="1318" loading="lazy" decoding="async" alt="휴대폰에서 연 Copilot Studio 테스트 사이트. CalculateDelivery 에이전트가 인사한 뒤 서비스 이용을 위해 사용자 코드를 입력해 달라고 요청하는 채팅 화면">
+              </a>
+              <figcaption>배포한 에이전트를 휴대폰에서 실행한 화면 — 대화를 시작하면 사용자 코드를 먼저 확인합니다.</figcaption>
+            </figure>
             <ul>
               <li><strong>납기 대안 비교.</strong> 한 주문의 예상 납기는 10월 20일(위반)이었고, 특근을 적용하는 가정에서는 10월 19일(위험)로 계산됐습니다. 시연에서는 원본 주문을 유지한 채 두 결과를 비교했습니다.</li>
               <li><strong>설비 장애 대응.</strong> 복구에 36시간과 72시간이 걸리는 두 경우를 계산하고, 시간 확정 전에는 장애를 대기 상태로 유지했습니다. 시험에서 복구 시간을 36시간으로 확정한 뒤 영향 주문 19건을 다시 계산했습니다. 이 집계에는 장애 기준 시각 이전에 배정된 일부 주문도 포함됩니다.</li>

@@ -597,3 +597,8 @@
     padding: 6px;
   }
 }
+
+.shot-figure.phone-shot {
+  max-width: 320px;
+  margin-inline: auto;
+}
