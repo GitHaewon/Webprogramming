@@ -407,3 +407,14 @@
 .apc-mark > span:first-child {
   background: #9de2d0;
 }
+
+.bgent-result-images {
+  grid-template-columns: minmax(0, 1fr);
+  margin-top: 18px;
+}
+
+.bgent-result-images img {
+  max-height: none;
+  aspect-ratio: auto;
+  background: var(--white);
+}

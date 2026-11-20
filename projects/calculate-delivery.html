@@ -7,7 +7,7 @@
   <meta name="description" content="2026 SKKU × Microsoft Agenthon에 제출한 Team Bgent의 자동차 납기 계산 및 설비 장애 대응 에이전트 프로젝트입니다.">
   <title>CalculateDelivery · 자동차 납기 대응 에이전트 | AI Research Portfolio</title>
   <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="../assets/style.css?v=agenthon">
+  <link rel="stylesheet" href="../assets/style.css?v=agenthon-results">
   <script src="../assets/app.js" defer></script>
 </head>
 <body>
@@ -71,6 +71,20 @@
               <li><strong>설비 장애 대응.</strong> 복구에 36시간과 72시간이 걸리는 두 경우를 계산하고, 시간 확정 전에는 장애를 대기 상태로 유지했습니다. 시험에서 복구 시간을 36시간으로 확정한 뒤 영향 주문 19건을 다시 계산했습니다. 이 집계에는 장애 기준 시각 이전에 배정된 일부 주문도 포함됩니다.</li>
               <li><strong>예외 응답.</strong> 이미 요청 납기 범위에 있는 주문에는 개선이 필요 없다고 안내했고, 존재하지 않는 주문에는 주문 ID를 다시 확인하도록 응답했습니다.</li>
             </ul>
+            <div class="event-photos bgent-result-images" id="result-images" role="group" aria-label="시험 결과 이미지">
+              <figure>
+                <a href="../assets/calculate-delivery/what-if-test.png" aria-label="납기 대안 비교와 예외 처리 시험 결과표 크게 보기">
+                  <img src="../assets/calculate-delivery/what-if-test.png" width="1600" height="900" loading="lazy" decoding="async" alt="대회 결과보고서의 가상 주문 시험표. 특근을 가정했을 때 예상 납기가 10월 20일에서 10월 19일로 변경된 결과를 보여줍니다.">
+                </a>
+                <figcaption>납기 대안 비교와 예외 처리 시험 결과표</figcaption>
+              </figure>
+              <figure>
+                <a href="../assets/calculate-delivery/incident-teams-alert.png" aria-label="설비 장애 감시 알림 · Teams 크게 보기">
+                  <img src="../assets/calculate-delivery/incident-teams-alert.png" width="1372" height="532" loading="lazy" decoding="async" alt="Teams에서 새 복구 근거가 생겨 재평가가 필요하다는 알림과 결정 마감 시 정비 담당자의 확인을 요청하는 알림을 보여줍니다.">
+                </a>
+                <figcaption>설비 장애 감시 알림 · Teams</figcaption>
+              </figure>
+            </div>
           </section>
           <section aria-labelledby="next-title">
             <h2 id="next-title">확장 방향</h2>
