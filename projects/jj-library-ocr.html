@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ko" id="top">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101b2e">
+  <meta name="description" content="전주대학교 도서관과 함께 책등의 청구기호를 인식하는 OCR 데모를 개발하고 장서점검 활용 가능성을 검토하는 프로젝트입니다.">
+  <title>전주대 도서관 책등 OCR | AI Research Portfolio</title>
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/style.css?v=jj-library-ocr">
+  <script src="../assets/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">본문으로 바로 가기</a>
+  <header class="site-header"><div class="container header-inner"><a class="brand" href="../index.html" aria-label="연구 포트폴리오 홈"><span class="brand-mark" aria-hidden="true">R<span class="brand-dot">.</span></span><span class="brand-copy"><strong>Research Archive</strong><small>AI · DATA · PRACTICE</small></span></a><button class="menu-toggle" type="button" aria-controls="primary-nav" aria-expanded="false" aria-label="메뉴 열기"><span></span><span></span><span></span></button><nav class="nav" id="primary-nav" aria-label="주 메뉴"><a href="../index.html#home">Home</a><a href="../index.html#research">Research</a><a href="../index.html#projects">Projects</a><a href="../index.html#activities">Activities</a><a href="../index.html#publications">Publications</a><a href="../index.html#skills">Skills</a><a class="nav-contact" href="../index.html#contact">CV &amp; Contact ↗</a></nav></div></header>
+  <main id="main">
+    <section class="detail-hero" aria-labelledby="project-title">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="현재 위치">
+          <a href="../index.html">Home</a><span aria-hidden="true">/</span>
+          <a href="../index.html#projects">Projects</a><span aria-hidden="true">/</span>
+          <span aria-current="page">전주대 도서관 책등 OCR</span>
+        </nav>
+        <p class="detail-kicker">전주대학교 도서관 협업</p>
+        <h1 id="project-title">전주대 도서관 책등 OCR</h1>
+        <p>책등 사진의 청구기호를 읽어 장서점검에 활용할 수 있는지 살펴보는 프로젝트입니다.</p>
+        <div class="detail-chips">
+          <span class="status status-active">진행 중</span>
+          <span>OCR</span>
+          <span>장서점검</span>
+        </div>
+      </div>
+    </section>
+    <div class="container detail-body">
+      <div class="detail-layout">
+        <div class="detail-main">
+          <section aria-labelledby="background-title">
+            <h2 id="background-title">문제 배경</h2>
+            <p>기존 장서점검 프로그램은 등록번호를 기준으로 개별 도서를 확인합니다. 책등 라벨의 청구기호는 서가 배열을 판단하는 데 도움이 되지만, 같은 청구기호를 가진 여러 권을 구별하려면 등록번호와 같은 별도의 식별 정보가 필요합니다. 이번 데모는 사진에서 청구기호를 얼마나 정확히 읽을 수 있는지부터 확인합니다.</p>
+          </section>
+          <section aria-labelledby="implementation-title">
+            <h2 id="implementation-title">현재 구현 및 준비</h2>
+            <ul>
+              <li>책마다 청구기호 라벨 영역을 직접 지정하고, 지정한 영역을 EasyOCR로 읽는 데모 코드를 작성했습니다.</li>
+              <li>같은 책이 찍힌 사진이 개발용과 최종 평가용에 나뉘지 않도록, 겹치는 사진을 검토하고 그룹 단위로 분리하는 절차를 마련했습니다.</li>
+              <li>라벨에 적힌 값을 수동으로 기록한 뒤 OCR 결과와 비교할 수 있도록, 완전 일치율과 문자 오류율을 계산하는 평가 코드를 마련했습니다.</li>
+            </ul>
+          </section>
+          <section aria-labelledby="next-title">
+            <h2 id="next-title">다음 단계</h2>
+            <p>개발용 사진에서 인식 오류를 살펴보고, 별도로 분리한 사진으로 정확도를 평가할 계획입니다. 평가 결과를 바탕으로 기존 장서점검 흐름에서 청구기호 인식 결과를 어떻게 활용할지 검토합니다.</p>
+          </section>
+          <a class="back-link" href="../index.html#projects"><span aria-hidden="true">←</span> 프로젝트 목록으로</a>
+        </div>
+        <aside class="detail-aside" aria-labelledby="project-facts">
+          <h2 id="project-facts">프로젝트 정보</h2>
+          <dl>
+            <div><dt>협업 기관</dt><dd>전주대학교 도서관</dd></div>
+            <div><dt>현재 단계</dt><dd>OCR 데모 개발 및 평가 준비</dd></div>
+            <div><dt>기술</dt><dd>Python · EasyOCR · OpenCV</dd></div>
+            <div><dt>평가 지표</dt><dd>완전 일치율 · 문자 오류율(CER)</dd></div>
+          </dl>
+        </aside>
+      </div>
+    </div>
+  </main>
+  <footer class="site-footer"><div class="container footer-inner"><div><strong>Research Archive<span>.</span></strong><p>AI · DATA · PRACTICE</p></div><p>확인된 기록을 바탕으로 확장하는 연구 포트폴리오</p><a href="#top">맨 위로 ↑</a></div></footer>
+</body>
+</html>
